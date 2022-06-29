@@ -1,0 +1,36 @@
+.compose-mail {
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    height: 60vh;
+    min-width: 40%;
+    max-width: 500px;
+    
+    background-color: aqua;
+    border-radius: 10px 10px 0 0;
+}
+.compose-mail header{
+    padding: .5em;
+    color: rgb(243, 243, 243);
+    background-color: rgb(64,64,64);
+    border-radius: 10px 10px 0 0;
+}
+
+.compose-mail form {
+    padding: 0 1em;
+    flex-direction: column;
+}
+
+.compose-mail form > *{
+    padding: .6em 0;
+}
+
+.compose-mail input {
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+.compose-mail textarea {
+    border: none;
+
+}
