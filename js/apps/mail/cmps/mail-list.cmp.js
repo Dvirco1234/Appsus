@@ -7,7 +7,7 @@ export default {
         <table>
             <tbody>
                 <tr v-for="mail in mails" :key="mail.id" class="mail-preview-container"
-                @click="select(mail.id)">
+                @click1="select(mail.id)">
                     <mail-preview :mail="mail"/>
                 </tr>
             </tbody>
