@@ -12,9 +12,10 @@
 
 
 /* MAIL */
-/* @import 'cmps/mail-list.css';
-@import 'cmps/mail-preview.css';
-@import 'cmps/mail-details.css';
+@import 'apps/mail/cmps/mail-list.css';
+@import 'apps/mail/cmps/mail-preview.css';
+@import 'apps/mail/cmps/mail-index.css';
+/* @import 'cmps/mail-details.css';
 @import 'cmps/mail-add.css';
 @import 'cmps/review.css';
 @import 'cmps/msg.css'; */

@@ -1,10 +1,14 @@
-import { utilService } from './util-service.js'
-import { storageService } from './async-storage-service.js'
+import { utilService } from '../../../services/util-service.js'
+import { storageService } from '../../../services/async-storage-service.js'
 
+const loggedinUser = { 
+    email: 'user@appsus.com',
+    fullname: 'Mamamia Bela' 
+}
 const MAILS_KEY = 'mailsDB'
-// _createMails()
+_createMails()
 
-export const bookService = {
+export const mailService = {
     query,
     remove,
     get,
@@ -26,4 +30,38 @@ function get(mailId) {
 
 function save(mail) {
     return storageService.put(MAILS_KEY, mail)
+}
+
+function _createMails() {
+    let mails = utilService.load(MAILS_KEY)
+    if (!mails || !mails.length) {
+        mails = [
+            {
+                id: 'e101',
+                subject: 'Miss you!',
+                body: 'Would love to catch up sometimes',
+                isRead: false,
+                sentAt: 1551134930594,
+                to: 'momo@momo.com',
+            },
+            {
+                id: 'e102',
+                subject: 'Come say hello!',
+                body: 'Would love to catch up sometimes',
+                isRead: false,
+                sentAt: 1551153930594,
+                to: 'momo@momo.com',
+            },
+            {
+                id: 'e103',
+                subject: 'I need help!',
+                body: 'Would love to catch up sometimes',
+                isRead: false,
+                sentAt: 1551233930594,
+                to: 'momo@momo.com',
+            },
+        ]
+        utilService.save(MAILS_KEY, mails)
+    }
+    return mails
 }
