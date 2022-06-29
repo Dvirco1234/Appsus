@@ -1,3 +1,4 @@
+import keepApp from './apps/keep/pages/note-index.cmp.js'
 import homePage from './pages/home-page.cmp.js'
 import keepApp from './apps/keep/pages/keep-app.cmp.js'
 import mailApp from './apps/mail/pages/mail-app.cmp.js'
