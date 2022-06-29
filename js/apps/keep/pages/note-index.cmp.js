@@ -4,7 +4,6 @@ import noteList from "../cmps/note-list.cmp.js"
 export default {
   template: `
   <section class="note-index main-layout">
-   <h1> note index </h1>
 
   <note-list v-if="notes" :notes="notes"/> 
     </section>

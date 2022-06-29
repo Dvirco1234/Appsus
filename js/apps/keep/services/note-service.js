@@ -53,6 +53,47 @@ function createNotes() {
             backgroundColor: "#00d",
           },
         },
+        {
+          id: utilService.makeId(),
+          type: "note-video",
+          info: {
+            url: "https://www.youtube.com/embed/woFCtpMXNNc",
+            title: "Bug in the javascript",
+          },
+          style: {
+            backgroundColor: "#00d",
+          },
+        },
+        {
+          id: utilService.makeId(),
+          type: "note-img",
+          info: {
+            url: "https://images.unsplash.com/photo-1472457897821-70d3819a0e24?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869&q=80",
+            title: "Bobi and Me",
+          },
+          style: {
+            backgroundColor: "#00d",
+          },
+        },
+        {
+          id: utilService.makeId(),
+          type: "note-img",
+          info: {
+            url: "https://images.unsplash.com/photo-1507808973436-a4ed7b5e87c9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80",
+            title: "Bobi and Me",
+          },
+          style: {
+            backgroundColor: "#00d",
+          },
+        },
+        {
+          id: utilService.makeId(),
+          type: "note-txt",
+          isPinned: true,
+          info: {
+            txt: "if no me to me, who me?",
+          },
+        },
       ]
       return storageService.postMany(NOTE_KEY, notes)
     }
