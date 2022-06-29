@@ -20,7 +20,5 @@ export default {
   },
   methods: {},
   computed: {},
-  components: {
-    noteTxt,
-  },
+  components: {},
 }
