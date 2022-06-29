@@ -1,7 +1,7 @@
 export default {
     props: ['mail'],
     template: `
-    <router-link :to="'/mail/'+mail.id">
+    <router-link class="mail-tr" :to="'/mail/'+mail.id">
         <td class="choose-mail"><input type="checkbox"></td>
         <td class="star">★</td>
         <td class="tag">tag</td>

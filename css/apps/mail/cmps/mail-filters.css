@@ -1,0 +1,10 @@
+.mail-nav {
+    padding: 1em;
+}
+.mail-nav ul{
+    padding: 0;
+}
+
+.mail-nav li{
+    padding: 1em 2em;
+}

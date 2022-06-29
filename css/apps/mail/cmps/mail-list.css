@@ -1,15 +1,17 @@
 .mail-list table {
-    background-color: rgb(237,237,237);
+    background-color: var(--clr1);
     border-collapse: collapse;
 }
 
 .mail-list tr:hover td{
-    box-shadow: 1px 1px 0 rgb(220 223 225);
+    box-shadow: 1px 1px 0 var(--clr2);
 }
+
 .mail-list tr:hover{
-    /* border: 1px solid rgb(220,223,225); */
-    outline: 1px solid rgb(220,223,225);
+    outline: 1px solid var(--clr2);
 }
-.mail-list td {
-    border-bottom: 1px solid rgb(220,223,225);
+
+.mail-list a {
+    color: var(--clr5);
 }
+

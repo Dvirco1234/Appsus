@@ -1,10 +1,12 @@
 :root {
-    --clr1: #ffffff;
-    --clr2: #4f4e4e;
-    --clr3: #606060;
-    --clr4: #58c93a;
-    --clr5: #b4ad9e;
-    --clr6: #c2c2c2;
+    /*  */
+    --clr1: rgba(237, 237, 237, 0.752); /* mail list */
+    --clr2: rgb(220,223,225); /* borders */
+    --clr3: rgb(243, 243, 243); /* light text */
+    --clr4: rgb(179,179,179); /* middle text */
+    --clr5: rgb(33,33,37); /* dark text */
+    --clr6: rgb(64,64,64); /* dark bgc */
+    --clr7: #c2c2c2;
 
     /* --header-h: 135px;
 

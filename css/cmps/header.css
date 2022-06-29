@@ -1,0 +1,29 @@
+.app-header {
+    color: var(--clr3);
+    padding: 1em;
+    border-bottom: 1px solid var(--clr2);
+}
+
+.header-nav .apps-icon{
+    padding: 0;
+}
+
+.header-nav .apps-icon img{
+    height: 2em;
+}
+
+.header-nav .links{
+    position: fixed;
+    top: 4em;
+    right: 1em;
+    background-color: var(--clr6);
+    padding: 2em;
+    border-radius: 10px;
+    box-shadow: -2px -2px 3px 0px rgba(130, 130, 130, 0.443);
+}
+
+.header-nav .links .r-link {
+    padding: .5em;
+    width: 4em;
+    height: 4em;
+}

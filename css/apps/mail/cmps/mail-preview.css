@@ -1,3 +1,12 @@
-/* td {
-    border: 2px solid black;
-} */
+.mail-tr td {
+    border-bottom: 1px solid var(--clr2);
+    padding: .8em;
+}
+
+.mail-tr .subject {
+    min-width: 12em;
+}
+
+.mail-tr .body {
+    min-width: 60vw;
+}

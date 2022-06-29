@@ -4,15 +4,14 @@
     right: 10px;
     height: 60vh;
     min-width: 40%;
-    max-width: 500px;
-    
-    background-color: aqua;
+    max-width: 500px;  
+    /* background-color: aqua; */
     border-radius: 10px 10px 0 0;
 }
 .compose-mail header{
     padding: .5em;
-    color: rgb(243, 243, 243);
-    background-color: rgb(64,64,64);
+    color: var(--clr3);
+    background-color: var(--clr6);
     border-radius: 10px 10px 0 0;
 }
 
@@ -27,7 +26,7 @@
 
 .compose-mail input {
     border: none;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--clr2);
 }
 
 .compose-mail textarea {

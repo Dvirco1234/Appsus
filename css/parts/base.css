@@ -8,26 +8,28 @@ h1, h2, h3, h4, h5, h6, p {
 
 a {
     text-decoration: none;
-    color: black;
+    color: var(--clr3);
     font-size: 1.1em;
-    font-weight: 600;
+    /* font-weight: 600; */
 }
 
 body {
     margin: 0;
-    font-family: sans-serif;
+    font-family: Roboto-Regular, sans-serif;
 }
 
 button {
     border: none;
-    background-color: none;
+    background-color: transparent;
     cursor: pointer;
     padding: 0.5em;
 }
 
+ul {
+    list-style: none;
+}
+
 .router-link-exact-active {
-    color: rgb(97, 176, 51);
+    color: var(--clr4);
 }
-.router-link-exact-active h3 {
-    color: rgb(2, 2, 2);
-}
+

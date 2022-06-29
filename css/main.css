@@ -17,6 +17,7 @@
 @import 'apps/mail/cmps/mail-preview.css';
 @import 'apps/mail/cmps/mail-index.css';
 @import 'apps/mail/cmps/compose-mail.css';
+@import 'apps/mail/cmps/mail-filters.css';
 /* @import 'cmps/mail-details.css';
 @import 'cmps/mail-add.css';
 @import 'cmps/review.css';

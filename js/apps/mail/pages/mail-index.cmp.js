@@ -8,12 +8,14 @@ import composeMail from '../cmps/compose-mail.cmp.js'
 
 export default {
     template: `
-        <section>
+        <section class="main-layout">
             <mail-search-filter @filtered="filterMails" :mails="mails"/>
             <button class="compose-btn" @click="isComposing = !isComposing">+ Compose</button>
             <compose-mail v-if="isComposing"/>
-            <mail-nav-filter @filtered="filterMails" :mails="mails"/>
-            <mail-list :mails="mailsToShow"/>
+            <div class="main-section flex">
+                <mail-nav-filter @filtered="filterMails" :mails="mails"/>
+                <mail-list :mails="mailsToShow"/>
+            </div>
         </section>
     `,
     components: {
