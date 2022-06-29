@@ -1,10 +1,11 @@
 import { noteService } from "../services/note-service.js"
+import noteList from "../cmps/note-list.cmp.js"
 
 export default {
   template: `
-  <section class="main-layout">
-   <h1> note index </h1>
+  <section class="note-index main-layout">
 
+  <note-list v-if="notes" :notes="notes"/> 
     </section>
 `,
   data() {
@@ -20,5 +21,7 @@ export default {
   },
   methods: {},
   computed: {},
-  components: {},
+  components: {
+    noteList,
+  },
 }
