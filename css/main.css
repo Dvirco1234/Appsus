@@ -21,5 +21,7 @@
 @import 'cmps/msg.css'; */
 
 /* KEEP */
-
+@import 'apps/keep/cmps/note-list.css';
+@import 'apps/keep/cmps/note-preview.css';
+@import 'apps/keep/cmps/note-index.css';
 /* BOOKS */

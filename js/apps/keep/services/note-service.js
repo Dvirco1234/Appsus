@@ -24,7 +24,7 @@ function createNotes() {
           id: utilService.makeId(),
           type: "note-img",
           info: {
-            url: "http://some-img/me",
+            url: "https://images.unsplash.com/photo-1498598457418-36ef20772bb9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
             title: "Bobi and Me",
           },
           style: {
@@ -46,11 +46,11 @@ function createNotes() {
           id: utilService.makeId(),
           type: "note-video",
           info: {
-            url: "https://www.youtube.com/watch?v=jxi0ETwDvws",
+            url: "https://www.youtube.com/embed/jxi0ETwDvws",
             title: "Bug in the javascript",
           },
           style: {
-            backgroundColor: "black",
+            backgroundColor: "#00d",
           },
         },
       ]
