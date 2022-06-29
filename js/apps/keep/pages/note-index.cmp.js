@@ -1,12 +1,26 @@
+import { noteService } from "../services/note-service.js"
+
 export default {
   template: `
-    <h1>hi</h1>
+  <section class="main-layout">
+   <h1> note index </h1>
+
+    </section>
 `,
   data() {
-    return {}
+    return {
+      notes: null,
+    }
   },
-  created() {},
+  created() {
+    noteService.query().then((notes) => {
+      this.notes = notes
+      console.log(this.notes)
+    })
+  },
   methods: {},
   computed: {},
-  unmounted() {},
+  components: {
+    noteTxt,
+  },
 }
