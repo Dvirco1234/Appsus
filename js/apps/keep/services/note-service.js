@@ -383,7 +383,7 @@ function _createNotes() {
     console.log(notes)
     utilService.save(NOTE_KEY, notes)
   }
-  console.log(notes)
+  // console.log(notes)
   return notes
 }
 

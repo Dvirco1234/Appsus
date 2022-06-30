@@ -3,11 +3,11 @@
     --clr1: rgba(237, 237, 237, 0.752); /* mail list */
     --clr2: rgb(220,223,225); /* borders */
     --clr3: rgb(243, 243, 243); /* light text */
-    --clr4: rgb(179,179,179); /* middle text */
-    --clr5: rgb(33,33,37); /* dark text */
+    --clr4: rgb(164, 164, 164); /* middle text */
+    --clr5: rgb(49, 49, 53); /* dark text */
     --clr6: rgb(64,64,64); /* dark bgc */
     --clr7: rgba(255,255,255,0.902); /* mail bgc  */
-    --clr8: rgba(242,245,245,0.8); /* mail bgc clicked  */
+    --clr8: rgba(242,245,245,1); /* mail bgc clicked  */
     --clr9: rgb(241,197,72); /* checked  */
     --clr10: rgba(154, 154, 154, 0.154); /* list hover  */
 

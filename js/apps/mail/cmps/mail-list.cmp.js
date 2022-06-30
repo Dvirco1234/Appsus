@@ -8,7 +8,7 @@ export default {
             <tbody>
                 <tr v-for="mail in mails" :key="mail.id" class="mail-preview-container"
                 @click1="select(mail.id)">
-                    <mail-preview :mail="mail"/>
+                    <mail-preview :mail="mail" @deleted="deleted"/>
                 </tr>
             </tbody>
         </table>
@@ -27,6 +27,9 @@ export default {
         // select(book) {
         //     this.$emit('selected', book)
         // },
+        deleted(mailId) {
+            this.$emit('deleted', mailId)
+        }
     },
     computed: {},
 }

@@ -1,18 +1,66 @@
 .mail-nav {
-    padding: 1em 1em 1em 0;
+    padding: 0 1em 1em 0;
     /* background-color: aqua; */
 }
+
 .mail-nav ul{
     padding: 0;
+}
+
+.mail-nav ul > * {
+    display: flex;
+    align-items: center;
 }
 
 .mail-nav li{
     padding: .7em 2em;
     width: 15em;
     border-radius: 0 2em 2em 0;
+    color: var(--clr5);
+}
+
+.mail-nav li span{
+    padding: 0 .5em;
 }
 
 .mail-nav li:hover{
     background-color: var(--clr10);
     cursor: pointer;
+}
+
+.mail-nav li.selected{
+    background-color: var(--clr10);
+    color: rgb(187, 0, 0);
+}
+
+.mail-search {
+    position: absolute;
+    border-radius: .4em;
+    background-color: var(--clr10);
+    width: 40%;
+    /* left: 50%;
+    transform: translate(-50%); */
+    left: 16em;
+}
+
+.mail-search span {
+    color: var(--clr5);
+    padding: 0 .7em;
+}
+
+.mail-search input {
+    border: none;
+    background-color: transparent;
+    border-inline-end: none;
+    color: var(--clr5);
+    padding: 1em 0;
+    max-width: 400px;
+    width: 100%; 
+    padding: .7em .5em;
+    outline: none;
+    font-size: 1em;
+}
+
+.mail-search input::placeholder {
+    color: rgb(167, 167, 167);
 }
