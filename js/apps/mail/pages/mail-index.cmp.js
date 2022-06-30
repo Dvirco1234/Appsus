@@ -11,7 +11,7 @@ export default {
         <section class="main-layout">
             <mail-search-filter @filtered="filterMails" :mails="mails"/>
             <button class="compose-btn" @click="isComposing = !isComposing">+ Compose</button>
-            <compose-mail v-if="isComposing"/>
+            <compose-mail v-if="isComposing" @sent="sendMail"/>
             <div class="main-section flex">
                 <mail-nav-filter @filtered="filterMails" :mails="mails"/>
                 <mail-list :mails="mailsToShow"/>
@@ -44,6 +44,19 @@ export default {
         //     if(!this.filterBy) this.filterBy = {}
         //     this.filterBy[filterBy] = filter
         // },
+        sendMail(mail) {
+            mailService.sendMail(mail)
+            this.isComposing = !this.isComposing
+            this.mails.unshift(mail)
+            
+            // const txt = 'review was successfully added'
+            // eventBus.emit('show-msg', {
+            //     txt,
+            //     type: 'success',
+            //     name: this.book.title,
+            //     bookId: this.book.id,
+            // })
+        }
     },
     computed: {
         mailsToShow() {
@@ -54,13 +67,17 @@ export default {
             // mails = mails.filter((mail) => regex.test(mail.subject) || regex.test(mail.body))
             return mails
         },
-        // mailsToShow() {
-        //     if (!this.filterBy) return this.mails
-        //     const regex = new RegExp(this.filterBy.txt, 'i')
-        //     return this.mails.filter(
-        //         (mail) => regex.test(mail.subject) || regex.test(mail.body)
-        //     )
-        // },
+        // carsForDisplay() {
+        //     var cars = this.cars
+        //     if (this.filterBy?.vendor) {
+        //         const regex = new RegExp(this.filterBy.vendor, 'i')
+        //         cars = cars.filter(car => regex.test(car.vendor))
+        //     }
+        //     if (this.filterBy?.minSpeed) {
+        //         cars = cars.filter(car => car.maxSpeed >= this.filterBy.minSpeed)
+        //     }
+        //     return cars
+        // }
     },
     unmounted() {},
 }

@@ -8,5 +8,10 @@
 }
 
 .mail-tr .body {
-    min-width: 60vw;
+    min-width: 40vw;
+}
+
+.choose-mail input {
+    background-color: transparent;
+    
 }

@@ -7,10 +7,12 @@ export default {
             <form @submit.prevent="send" class="flex">
                 <input ref="input" type="text" id="recipients" v-model="newMail.to" placeholder="Recipients">
                 <input type="text" id="name" v-model="newMail.subject" placeholder="Subject">
-                <textarea id="free-txt" cols="30" rows="10" 
-                v-model="newMail.txt"></textarea>
-                
-                <footer class="flex space-between"><button>Send</button></footer>
+                <div class="text-area"><textarea id="free-txt" cols="50" rows="20" 
+                v-model="newMail.body"></textarea>
+                </div>
+                <footer class="flex space-between">
+                    <button>Send</button>
+                </footer>
             </form>
         </section>
     `,
@@ -19,24 +21,17 @@ export default {
             newMail: {
                 to: '',
                 subject: '',
-                txt: '',
+                body: '',
+                sentAt: null,
             }
         }
     },
     created() {},
     methods: {
-        // send() {
-        //     bookService.addReview(this.book, {...this.review})
-        //     this.isReview = !this.isReview
-        //     this.review = bookService.getEmptyReview()
-        //     const txt = 'review was successfully added'
-        //     eventBus.emit('show-msg', {
-        //         txt,
-        //         type: 'success',
-        //         name: this.book.title,
-        //         bookId: this.book.id,
-        //     })
-        // },
+        send() {
+            this.sentAt = Date.now()
+            this.$emit('sent', this.newMail)
+        },
     },
     computed: {},
     unmounted() {},

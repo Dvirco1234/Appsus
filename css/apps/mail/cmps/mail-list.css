@@ -1,6 +1,10 @@
+.mail-list {
+    /* margin-inline-end: 2em; */
+}
 .mail-list table {
     background-color: var(--clr1);
     border-collapse: collapse;
+    /* width: 80vw; */
 }
 
 .mail-list tr:hover td{

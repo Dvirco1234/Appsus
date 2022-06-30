@@ -13,6 +13,7 @@ export const mailService = {
     remove,
     get,
     save,
+    sendMail,
 }
 
 function query() {
@@ -32,36 +33,47 @@ function save(mail) {
     return storageService.put(MAILS_KEY, mail)
 }
 
+function sendMail(mail) {
+    mail.id = utilService.makeId()
+    mail.isRead = false
+    mail.isSent = true
+    return storageService.post(MAILS_KEY, mail)
+}
+
 function _createMails() {
-    let mails = utilService.load(MAILS_KEY)
-    if (!mails || !mails.length) {
-        mails = [
-            {
-                id: 'e101',
-                subject: 'Miss you!',
-                body: 'Would love to catch up sometimes',
-                isRead: false,
-                sentAt: 1551134930594,
-                to: 'momo@momo.com',
-            },
-            {
-                id: 'e102',
-                subject: 'Come say hello!',
-                body: 'Would love to catch up sometimes',
-                isRead: false,
-                sentAt: 1551153930594,
-                to: 'momo@momo.com',
-            },
-            {
-                id: 'e103',
-                subject: 'I need help!',
-                body: 'Would love to catch up sometimes',
-                isRead: false,
-                sentAt: 1551233930594,
-                to: 'momo@momo.com',
-            },
-        ]
-        utilService.save(MAILS_KEY, mails)
-    }
-    return mails
+    // let mails = utilService.load(MAILS_KEY)
+    return query().then((mails) => {
+        if (!mails || !mails.length) {
+            mails = [
+                {
+                    id: 'e101',
+                    subject: 'Miss you!',
+                    body: 'Would love to catch up sometimes',
+                    isRead: false,
+                    sentAt: 1551134930594,
+                    to: 'momo@momo.com',
+                },
+                {
+                    id: 'e102',
+                    subject: 'Come say hello!',
+                    body: 'Would love to catch up sometimes',
+                    isRead: false,
+                    sentAt: 1551153930594,
+                    to: 'momo@momo.com',
+                },
+                {
+                    id: 'e103',
+                    subject: 'I need help!',
+                    body: 'Would love to catch up sometimes',
+                    isRead: false,
+                    sentAt: 1551233930594,
+                    to: 'momo@momo.com',
+                },
+            ]
+            return storageService.postMany(MAILS_KEY, mails)
+            // utilService.save(MAILS_KEY, mails)
+        }
+        return mails
+    })
+    // return mails
 }

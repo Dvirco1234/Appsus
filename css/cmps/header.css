@@ -22,8 +22,14 @@
     box-shadow: -2px -2px 3px 0px rgba(130, 130, 130, 0.443);
 }
 
-.header-nav .links .r-link {
+/* .header-nav .links .r-link {
     padding: .5em;
+    width: 4em;
+    height: 4em;
+} */
+
+.header-nav .links .r-link a {
+    padding: 1em .5em;
     width: 4em;
     height: 4em;
 }
