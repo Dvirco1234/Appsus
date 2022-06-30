@@ -4,10 +4,10 @@ import { utilService } from "../../../services/util-service.js"
 export const noteService = {
   query,
   addNote,
-  getNoteById,
-  saveNote,
-  pinNote,
-  updateNote,
+  // getNoteById,
+  // saveNote,
+  // pinNote,
+  // updateNote,
   getInputTypes,
   removeNote,
 }
@@ -80,7 +80,7 @@ function setnewNoteTxt(newTxt, note) {
   return Promise.resolve(note)
 }
 
-function _createNotes() {
+function _createNotes1() {
   return query().then((notes) => {
     if (!notes || !notes.length) {
       notes = [
@@ -184,13 +184,15 @@ function _createNotes() {
           },
         },
       ]
+      console.log(notes)
       return storageService.postMany(NOTE_KEY, notes)
     }
+    console.log(notes)
     return notes
   })
 }
 
-function addNote(note) {
+function addNote1(note) {
   let newNote = {
     id: utilService.makeId(),
     isPinned: false,
@@ -221,7 +223,7 @@ function addNote(note) {
   return storageService.post(NOTE_KEY, newNote)
 }
 
-function saveNote(note) {
+function saveNote1(note) {
   return storageService.put(NOTE_KEY, note)
 }
 
@@ -231,4 +233,175 @@ function removeNote(noteId) {
 
 function getNoteById(id) {
   return storageService.get(NOTE_KEY, id)
+}
+
+function addNote2(note) {
+  note.id = utilService.makeId()
+  note.isPinned = false
+  note.style = {
+    backgroundColor: "yellow",
+  }
+  return storageService.post(NOTE_KEY, note)
+}
+//   let newNote = {
+//     id: utilService.makeId(),
+//     isPinned: false,
+//     info: {},
+//     style: {
+//       backgroundColor: "yellow",
+//     },
+//   }
+
+//   if (newNote.type === "note-txt") {
+//     newNote.info = { txt }
+//   }
+//   if (newNote.type === "note-img") {
+//     newNote.info = { url, title }
+//   }
+//   if (newNote.type === "note-todos") {
+//     newNote.info = {
+//       label,
+//       todos: [],
+//     }
+//   }
+//   if (newNote.type === "note.video") {
+//     newNote.info = { url, title }
+//   }
+//   if (newNote.type === "note-audio") {
+//     newNote.info = { url }
+//   }
+//   newNote = note
+//   console.log(newNote)
+
+//   return storageService.post(NOTE_KEY, newNote)
+// }
+
+function _createNotes() {
+  let notes = utilService.load(NOTE_KEY)
+  if (!notes || !notes.length) {
+    notes = [
+      {
+        id: utilService.makeId(),
+        type: "note-txt",
+        isPinned: true,
+        info: {
+          txt: "Fullstack Me Baby!",
+        },
+        style: {
+          backgroundColor: "#00d",
+        },
+      },
+      {
+        id: utilService.makeId(),
+        type: "note-img",
+        info: {
+          url: "https://images.unsplash.com/photo-1498598457418-36ef20772bb9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+          title: "Bobi ",
+        },
+        style: {
+          backgroundColor: "#00d",
+        },
+      },
+      {
+        id: utilService.makeId(),
+        type: "note-todos",
+        info: {
+          label: "Get my stuff together",
+          todos: [
+            { txt: "Driving liscence", doneAt: null },
+            { txt: "Coding power", doneAt: 187111111 },
+          ],
+        },
+        style: {
+          backgroundColor: "#00d",
+        },
+      },
+      {
+        id: utilService.makeId(),
+        type: "note-video",
+        info: {
+          url: "https://www.youtube.com/embed/jxi0ETwDvws",
+          title: "Bug in the javascript",
+        },
+        style: {
+          backgroundColor: "#00d",
+        },
+      },
+      {
+        id: utilService.makeId(),
+        type: "note-video",
+        info: {
+          url: "https://www.youtube.com/embed/woFCtpMXNNc",
+          title: "Bug in the javascript",
+        },
+        style: {
+          backgroundColor: "#00d",
+        },
+      },
+      {
+        id: utilService.makeId(),
+        type: "note-img",
+        info: {
+          url: "https://images.unsplash.com/photo-1472457897821-70d3819a0e24?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869&q=80",
+          title: "Bobi and Me",
+        },
+        style: {
+          backgroundColor: "#00d",
+        },
+      },
+      {
+        id: utilService.makeId(),
+        type: "note-img",
+        info: {
+          url: "https://images.unsplash.com/photo-1507808973436-a4ed7b5e87c9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80",
+          title: " Me",
+        },
+        style: {
+          backgroundColor: "#00d",
+        },
+      },
+      {
+        id: utilService.makeId(),
+        type: "note-txt",
+        isPinned: true,
+        info: {
+          txt: "If no me to me, who me?",
+        },
+      },
+      {
+        id: utilService.makeId(),
+        type: "note-audio",
+        isPinned: true,
+        info: {
+          url: "audio/timbaland.mp3",
+        },
+        style: {
+          backgroundColor: "rgb(136, 221, 255)",
+        },
+      },
+    ]
+    console.log(notes)
+    utilService.save(NOTE_KEY, notes)
+  }
+  console.log(notes)
+  return notes
+}
+
+function saveNote(note) {
+  if (note.id) return storageService.put(NOTE_KEY, note)
+  else return storageService.post(NOTE_KEY, note)
+}
+
+function addNote(note) {
+  const { type, info } = note
+  const newNote = {
+    type,
+    info,
+    isPinned: false,
+    style: {
+      backgroundColor: "yellow",
+    },
+  }
+
+  return storageService.post(NOTE_KEY, newNote)
 }

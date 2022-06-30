@@ -5,34 +5,34 @@ import addNote from "../cmps/add-note.cmp.js"
 export default {
   template: `
   <section class="note-index main-layout">
-  <add-note @addNote="addNote" />
+  <add-note @newNote="addNote" />
   <note-list v-if="notes" :notes="notes"/> 
     </section>
 `,
   data() {
     return {
-      notes: null,
+      notes: [],
     }
   },
   created() {
-    this.getNotesFromStorage()
+    // this.getNotesFromStorage()
+    noteService.query().then((notes) => (this.notes = notes))
   },
   methods: {
     addNote(newNote) {
-      noteService.addNote(newNote).then((ans) => {
-        console.log(ans, this.notes)
-      })
+      this.notes.unshift(newNote)
     },
-    getNotesFromStorage() {
-      noteService.query().then((notes) => {
-        this.notes = notes
-        console.log(this.notes)
-      })
-    },
+    // getNotesFromStorage() {
+    //   noteService.query().then((notes) => {
+    //     this.notes = notes
+    //     console.log(this.notes)
+    //   })
+    // },
   },
   computed: {},
   components: {
     noteList,
     addNote,
   },
+  mounted() {},
 }
