@@ -4,7 +4,7 @@ export default {
         <div>
         <input type="text"
                 v-model="note.info.title"
-               placeholder="add title">
+                placeholder="add title">
           <input v-model="note.info.url" type="url" placeholder="add video url">
         </div>
       </section>

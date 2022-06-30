@@ -1,6 +1,7 @@
 import { noteService } from "../services/note-service.js"
 import noteList from "../cmps/note-list.cmp.js"
 import addNote from "../cmps/add-note.cmp.js"
+import { eventBus } from "../../../services/eventBus-service.js"
 
 export default {
   template: `
@@ -15,19 +16,19 @@ export default {
     }
   },
   created() {
-    // this.getNotesFromStorage()
-    noteService.query().then((notes) => (this.notes = notes))
+    this.getNotesFromStorage()
+    eventBus.on("noteAdd", this.addNote)
   },
   methods: {
     addNote(newNote) {
-      this.notes.unshift(newNote)
+      // this.notes.unshift(newNote)
+      noteService
+        .addNote(newNote)
+        .then((newNote) => this.notes.unshift(newNote))
     },
-    // getNotesFromStorage() {
-    //   noteService.query().then((notes) => {
-    //     this.notes = notes
-    //     console.log(this.notes)
-    //   })
-    // },
+    getNotesFromStorage() {
+      noteService.query().then((notes) => (this.notes = notes))
+    },
   },
   computed: {},
   components: {

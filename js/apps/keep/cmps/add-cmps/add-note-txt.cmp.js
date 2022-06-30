@@ -16,13 +16,14 @@ export default {
       },
     }
   },
-  created() {},
+  created() {
+    console.log(this.note)
+  },
   methods: {
     addNote() {
-      console.log(this.info)
       this.$emit("noteAdd", this.note)
     },
   },
   computed: {},
-  unmounted() {},
+  mounted() {},
 }
