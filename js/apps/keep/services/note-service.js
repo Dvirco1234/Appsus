@@ -171,10 +171,7 @@ function _createNotes() {
     ]
     utilService.save(NOTE_KEY, notes)
   }
-<<<<<<< HEAD
   // console.log(notes)
-=======
->>>>>>> 9e9014b7910ac09951561230750827eba2ea0b34
   return notes
 }
 
