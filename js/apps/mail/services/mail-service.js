@@ -1,20 +1,24 @@
 import { utilService } from '../../../services/util-service.js'
 import { storageService } from '../../../services/async-storage-service.js'
 
-const loggedinUser = { 
-    email: 'user@appsus.com',
-    fullname: 'Mamamia Bela' 
-}
-const MAILS_KEY = 'mailsDB'
-_createMails()
-
 export const mailService = {
     query,
     remove,
     get,
     save,
     sendMail,
+    saveDraft,
 }
+
+const loggedinUser = {
+    email: 'user@appsus.com',
+    fullname: 'Mamamia Bela',
+}
+
+const MAILS_KEY = 'mailsDB'
+// const DRAFTS_KEY = 'draftsDB'
+_createMails()
+// _createDrafts()
 
 function query() {
     return storageService.query(MAILS_KEY)
@@ -34,11 +38,35 @@ function save(mail) {
 }
 
 function sendMail(mail) {
-    mail.id = utilService.makeId()
+    if(mail.isDraft){
+        mail.isDraft = false
+        return storageService.put(MAILS_KEY, mail)
+    }
+
     mail.isRead = false
     mail.isSent = true
+    mail.isDraft = false
     return storageService.post(MAILS_KEY, mail)
 }
+
+function saveDraft(draft) {
+    if (draft.id) return storageService.put(MAILS_KEY, draft)
+    return storageService.post(MAILS_KEY, draft)
+}
+
+// function queryDrafts() {
+//     return storageService.query(DRAFTS_KEY)
+// }
+
+// function _createDrafts(){
+//     return queryDrafts().then((drafts) => {
+//         if (!drafts || !drafts.length) {
+//             drafts = []
+//             return storageService.postMany(DRAFTS_KEY, drafts)
+//         }
+//         return drafts
+//     })
+// }
 
 function _createMails() {
     // let mails = utilService.load(MAILS_KEY)
@@ -52,6 +80,10 @@ function _createMails() {
                     isRead: false,
                     sentAt: 1551134930594,
                     to: 'momo@momo.com',
+                    isDraft: false,
+                    isStarred: false,
+                    isSent: false,
+                    isLabeled: false,
                 },
                 {
                     id: 'e102',
@@ -60,6 +92,10 @@ function _createMails() {
                     isRead: false,
                     sentAt: 1551153930594,
                     to: 'momo@momo.com',
+                    isDraft: false,
+                    isStarred: false,
+                    isSent: false,
+                    isLabeled: false,
                 },
                 {
                     id: 'e103',
@@ -68,6 +104,10 @@ function _createMails() {
                     isRead: false,
                     sentAt: 1551233930594,
                     to: 'momo@momo.com',
+                    isDraft: false,
+                    isStarred: false,
+                    isSent: false,
+                    isLabeled: false,
                 },
             ]
             return storageService.postMany(MAILS_KEY, mails)
