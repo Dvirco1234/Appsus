@@ -1,5 +1,5 @@
 export default {
-    template: `
+  template: `
     <header class="app-header flex space-between align-center">
     <div class="logo">
         <router-link to="/"><h3>appsus</h3></router-link>
@@ -16,15 +16,15 @@ export default {
       </nav>
     </header>
     `,
-    data() {
-        return {
-          isLinksOpen: false,
-        }
+  data() {
+    return {
+      isLinksOpen: false,
+    }
+  },
+  methods: {
+    toggleNav() {
+      this.isLinksOpen = !this.isLinksOpen
     },
-    methods: {
-      toggleNav(){
-        this.isLinksOpen = !this.isLinksOpen
-      }
-    },
-    computed: {},
+  },
+  computed: {},
 }

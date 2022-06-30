@@ -11,9 +11,7 @@ export default {
   data() {
     return {}
   },
-  created() {
-    console.log(this.notes)
-  },
+  created() {},
   methods: {},
   components: {
     notePreview,
