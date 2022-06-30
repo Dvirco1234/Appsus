@@ -171,7 +171,6 @@ function _createNotes() {
     ]
     utilService.save(NOTE_KEY, notes)
   }
-  // console.log(notes)
   return notes
 }
 
