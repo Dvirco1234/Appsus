@@ -14,6 +14,7 @@
 
 .header-nav .links{
     position: fixed;
+    z-index: 20;
     top: 4em;
     right: 1em;
     background-color: var(--clr6);

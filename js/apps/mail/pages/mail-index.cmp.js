@@ -1,4 +1,5 @@
 import { mailService } from '../services/mail-service.js'
+import { showSuccessMsg } from '../../../services/eventBus-service.js'
 import mailList from '../cmps/mail-list.cmp.js'
 import mailSearchFilter from '../cmps/mail-search-filter.cmp.js'
 import mailNavFilter from '../cmps/mail-nav-filter.cmp.js'
@@ -11,7 +12,8 @@ export default {
         <section class="main-layout">
             <mail-search-filter @filtered="filterMails" :mails="mails"/>
             <button class="compose-btn" @click="isComposing = !isComposing">+ Compose</button>
-            <compose-mail v-if="isComposing" @sent="sendMail"/>
+            <compose-mail v-if="isComposing" @sent="sendMail" @saveDraft="saveMailDraft" 
+            :draft="draft" @closed="toggleCompose"/>
             <div class="main-section flex">
                 <mail-nav-filter @filtered="filterMails" :mails="mails"/>
                 <mail-list :mails="mailsToShow"/>
@@ -29,6 +31,7 @@ export default {
             mails: [],
             filterBy: null,
             isComposing: false,
+            draft: null,
         }
     },
     created() {
@@ -46,17 +49,22 @@ export default {
         // },
         sendMail(mail) {
             mailService.sendMail(mail)
+                .then(() => {
+                    console.log('send success');
+                    showSuccessMsg('Sent successfully')
+                    this.mails.unshift(mail)
+                })
             this.isComposing = !this.isComposing
-            this.mails.unshift(mail)
-            
-            // const txt = 'review was successfully added'
-            // eventBus.emit('show-msg', {
-            //     txt,
-            //     type: 'success',
-            //     name: this.book.title,
-            //     bookId: this.book.id,
-            // })
-        }
+        },
+        saveMailDraft(draft) {
+            mailService.saveDraft(draft)
+                .then(() => {
+                    this.draft = draft
+                })
+        },
+        toggleCompose() {
+            this.isComposing = !this.isComposing
+        },
     },
     computed: {
         mailsToShow() {

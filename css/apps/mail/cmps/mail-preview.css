@@ -1,17 +1,71 @@
-.mail-tr td {
-    border-bottom: 1px solid var(--clr2);
+.mail-preview-container td {
     padding: .8em;
 }
 
-.mail-tr .subject {
+.preview-container {
+    border-bottom: 1px solid var(--clr2);
+    height: 3.1em;
+}
+
+/* .preview-container:hover {
+    
+} */
+
+.preview-container:hover .choose-mail {
+    color: var(--clr5);
+}
+
+.preview-container:hover .star {
+    color: var(--clr5);
+}
+
+.preview-container:hover .tag {
+    color: var(--clr5);
+}
+
+.mail tr {
+    display: flex;
+}
+
+.mail-tr {
+    align-items: center;
+    flex-grow: 1;
+}
+
+.choose-mail, .star, .tag {
+    font-size: 1em;
+    color: var(--clr4);
+    border-radius: 50%;
+    box-shadow: inset 0px 0px 0 3px #f1f1f1;
+}
+
+.choose-mail:hover, .star:hover, .tag:hover {
+    background-color: var(--clr10);
+    /* color: var(--clr5); */
+    cursor: pointer;
+}
+
+.mail-preview-container .subject {
     min-width: 12em;
 }
 
-.mail-tr .body {
-    min-width: 40vw;
+.mail-preview-container .subject span {
+    color: red;
 }
 
-.choose-mail input {
-    background-color: transparent;
-    
+.mail-preview-container .body {
+    min-width: 40vw;
+    flex-grow: 1;
+}
+
+.material-symbols-outlined.checked {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 500,
+  'GRAD' 200,
+  'opsz' 48
+}
+
+.checked {
+    color: var(--clr9);
 }

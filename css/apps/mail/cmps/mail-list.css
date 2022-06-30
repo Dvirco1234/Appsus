@@ -7,12 +7,9 @@
     /* width: 80vw; */
 }
 
-.mail-list tr:hover td{
-    box-shadow: 1px 1px 0 var(--clr2);
-}
-
 .mail-list tr:hover{
     outline: 1px solid var(--clr2);
+    box-shadow: 1px 1px 0 var(--clr2);
 }
 
 .mail-list a {
