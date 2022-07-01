@@ -9,7 +9,7 @@ export default {
     <section class="notes-add">
     <h4 v-if="!type">Pick a note </h4>
       <add-note-txt v-if="type === 'note-txt'" @noteAdd="noteAdd" />
-      <add-note-img v-if="type === 'note-img'" @noteAdd="noteAdd" />
+      <add-note-img v-if="type === 'file'" @noteAdd="noteAdd" />
       <add-note-video v-if="type === 'note-video'" @noteAdd="noteAdd" />
       <add-note-video v-if="type === 'note-todos'" @noteAdd="noteAdd" />
 
@@ -17,7 +17,7 @@ export default {
                 <button @click="setInputType('note-txt')">
                    <span class="material-symbols-outlined"> note_add </span>
                 </button>
-                <button @click="setInputType('note-img')">
+                <button @click="setInputType('file')">
                   <span class="material-symbols-outlined">photo_camera</span>
                 </button>
                 <button @click="setInputType('note-video')">
@@ -39,13 +39,12 @@ export default {
   },
   methods: {
     noteAdd(note) {
-      console.log(note)
       this.$emit("newNote", note)
+      console.log(note)
       this.type = null
     },
     setInputType(type) {
       this.type = type
-      console.log(this.type)
     },
   },
   computed: {},

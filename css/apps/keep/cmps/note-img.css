@@ -1,3 +1,8 @@
-.note-img {
+/* .note-img {
     background-color: #D3EBCD;
+} */
+
+.np-image-preview {
+    width: 100%;
+    height: 100px;
 }

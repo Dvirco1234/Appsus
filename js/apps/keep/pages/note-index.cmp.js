@@ -18,6 +18,7 @@ export default {
   created() {
     this.getNotesFromStorage()
     eventBus.on("noteAdd", this.addNote)
+    eventBus.on("noteRemoved", this.removeNote)
   },
   methods: {
     addNote(newNote) {
@@ -28,6 +29,12 @@ export default {
     },
     getNotesFromStorage() {
       noteService.query().then((notes) => (this.notes = notes))
+    },
+    removeNote(noteId) {
+      noteService.removeNote(noteId).then(() => {
+        const idx = this.notes.findIndex((note) => note.id === noteId)
+        this.notes.splice(idx, 1)
+      })
     },
   },
   computed: {},

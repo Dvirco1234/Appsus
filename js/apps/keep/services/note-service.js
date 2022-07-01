@@ -72,7 +72,7 @@ function _createNotes() {
           title: "but slowly please...",
         },
         style: {
-          backgroundColor: "rgb(220,223,225)",
+          backgroundColor: "inherit",
         },
       },
       {
@@ -97,7 +97,7 @@ function _createNotes() {
           ],
         },
         style: {
-          backgroundColor: "rgb(220,223,225)",
+          backgroundColor: "inherit",
         },
       },
       {
@@ -108,7 +108,7 @@ function _createNotes() {
           title: "Bug in the javascript",
         },
         style: {
-          backgroundColor: "rgb(220,223,225)",
+          backgroundColor: "inherit",
         },
       },
       {
@@ -164,7 +164,7 @@ function _createNotes() {
           url: "audio/timbaland.mp3",
         },
         style: {
-          backgroundColor: "rgb(136, 221, 255)",
+          backgroundColor: "inherit",
           height: "100px",
         },
       },
@@ -181,7 +181,7 @@ function addNote(note) {
     info,
     isPinned: false,
     style: style || {
-      backgroundColor: "rgb(220,223,225)",
+      backgroundColor: "inherit",
     },
   }
   // return storageService.post(NOTE_KEY, newNote)

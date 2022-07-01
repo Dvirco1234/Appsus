@@ -1,0 +1,7 @@
+.notes-add button {
+    opacity: 0.3
+}
+
+.notes-add button:hover {
+    opacity: 1;
+}
