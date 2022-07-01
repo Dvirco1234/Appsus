@@ -23,6 +23,11 @@
     padding: 0 .5em;
 }
 
+.mail-nav li .unread-count{
+    padding: 0 0 0 5.5em;
+    font-weight: 600;
+}
+
 .mail-nav li:hover{
     background-color: var(--clr10);
     cursor: pointer;

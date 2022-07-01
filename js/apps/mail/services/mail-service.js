@@ -42,7 +42,6 @@ function sendMail(mail) {
         mail.isDraft = false
         return storageService.put(MAILS_KEY, mail)
     }
-
     mail.isRead = false
     mail.isSent = true
     mail.isDraft = false

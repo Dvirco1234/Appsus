@@ -1,5 +1,5 @@
 .mail-preview-container td {
-    padding: .8em;
+    padding: .5em;
 }
 
 .preview-container {
@@ -37,6 +37,10 @@
 
 .mail-info .subject {
     width: 10em;
+}
+
+.mail-info .sent-at {
+    padding: .8em;
 }
 
 .mail tr {
@@ -77,7 +81,7 @@
 .opt-btns {
     position: absolute;
     background-color: #f1f1f1;
-    right:.8em;
+    right: .8em;
     top: 50%;
     transform: translate(0, -50%);
     opacity: 0;
@@ -88,7 +92,8 @@
 }
 
 .opt-btns button{
-    padding: .8em;
+    padding: .5em .6em;
+    border-radius: 50%;
 }
 
 .opt-btns button:hover span{
@@ -96,7 +101,6 @@
 }
 
 .opt-btns button:hover {
-    border-radius: 50%;
     /* box-shadow: inset 0px 0px 0 3px #f1f1f1; */
     background-color: var(--clr10);
 }
