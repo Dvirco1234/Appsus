@@ -29,6 +29,7 @@ export default {
                 <button @click="setInputType('note-audio')" >
                   <span class="material-symbols-outlined"> music_note </span>
                 </button>
+    
            </div>
     </section>
     `,

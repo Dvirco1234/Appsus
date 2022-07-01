@@ -18,6 +18,7 @@ export default {
           <button @click="removeNote">
               <span class="material-symbols-outlined">delete</span>  
           </button>
+          <button @click="sendToMail"> <router-link to='/mail/'> Send </router-link></button>
         </section>
   `,
   props: ["note"],
@@ -25,6 +26,10 @@ export default {
     return {}
   },
   methods: {
+    sendToMail() {
+      console.log("send")
+      eventBus.emit("sendNote", this.note)
+    },
     pinNote() {
       const newNote = this.clone()
       console.log(newNote)
