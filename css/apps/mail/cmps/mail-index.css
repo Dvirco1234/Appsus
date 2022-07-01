@@ -29,5 +29,12 @@
 
 .sort-mails option {
     padding: 2em .5em;
+    background-color: var(--clr10);
+    color: var(--clr5);
+    font-size: 1.2em;
+}
+
+.sort-mails option:hover {
+    background-color: var(--clr4);
 }
 

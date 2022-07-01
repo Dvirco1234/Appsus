@@ -19,6 +19,7 @@ export default {
     this.getNotesFromStorage()
     eventBus.on("noteAdd", this.addNote)
     eventBus.on("noteRemoved", this.removeNote)
+    this.unsubscribe = eventBus.on('mailToNote', this.mailToNote)
   },
   methods: {
     addNote(newNote) {
@@ -36,11 +37,16 @@ export default {
         this.notes.splice(idx, 1)
       })
     },
+    mailToNote(mail) {
+      console.log(mail);
+    },
   },
   computed: {},
   components: {
     noteList,
     addNote,
   },
-  mounted() {},
+  unmounted() {
+    this.unsubscribe()
+  },
 }

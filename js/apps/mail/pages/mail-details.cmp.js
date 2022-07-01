@@ -1,3 +1,4 @@
+import { eventBus } from '../../../services/eventBus-service.js'
 import { mailService } from '../services/mail-service.js'
 
 export default {
@@ -6,6 +7,9 @@ export default {
         <section class="full-mail-container" v-if="mail">
             <button class="back-btn" @click="backToList" title="Back to inbox">
                 <span class="material-symbols-outlined">arrow_back</span>
+            </button>
+            <button class="save-as-note-btn" @click="saveAsNote" title="Save mail as note">
+                <router-link to="/keep"><span class="material-symbols-outlined">save</span></router-link>
             </button>
             <button class="delete-btn" @click="deleteMail" title="Delete mail">
                 <span class="material-symbols-outlined">delete</span>
@@ -34,6 +38,9 @@ export default {
             this.$emit('deleted', this.mail.id)
             this.backToList()
         },
+        saveAsNote() {
+            eventBus.emit('mailToNote', this.mail)
+        }
     },
     computed: {},
     unmounted() {},

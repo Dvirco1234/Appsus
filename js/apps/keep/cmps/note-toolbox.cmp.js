@@ -18,6 +18,8 @@ export default {
           <button @click="removeNote">
               <span class="material-symbols-outlined">delete</span>  
           </button>
+          </button>
+          <button @click="sendToMail"> <router-link to="/mail/"> Send </router-link></button>
         </section>
   `,
   props: ["note"],
@@ -48,6 +50,9 @@ export default {
       cloneNote.style.backgroundColor = color
       console.log("change bgc")
     },
+    sendToMail(){
+        eventBus.emit("sendNote", this.note.info)
+    }
   },
   computed: {},
   created() {},

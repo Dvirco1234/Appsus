@@ -1,5 +1,5 @@
 import { mailService } from '../services/mail-service.js'
-import { showSuccessMsg } from '../../../services/eventBus-service.js'
+import { showSuccessMsg, eventBus } from '../../../services/eventBus-service.js'
 import mailList from '../cmps/mail-list.cmp.js'
 import mailSearchFilter from '../cmps/mail-search-filter.cmp.js'
 import mailNavFilter from '../cmps/mail-nav-filter.cmp.js'
@@ -12,11 +12,11 @@ export default {
         <section class="main-layout">
             <mail-search-filter @filtered="searchFilter" :mails="mails"/>
             <div class="sort-mails">
-                <select name="Sort" id="sort" v-model="sortBy" @change="sortMails">
-                    <option value="new">New</option>
-                    <option value="old">Old</option>
-                    <option value="a">A-Z</option>
-                    <option value="z">Z-A</option>
+                <select id="sort" v-model="sortBy" @change="sortMails">
+                    <option value="sentAt">New</option>
+                    <!-- <option value="sentAt-1">Old</option> -->
+                    <option value="subject">Title (A-Z)</option>
+                    <!-- <option value="subject-1">Title (Z-A)</option> -->
                 </select>
             </div>
             <button class="compose-btn flex space-between align-center" @click="isComposing = !isComposing">
@@ -42,11 +42,14 @@ export default {
             draft: null,
             filterSearch: '',
             filterNav: null,
-            sortBy: null,
+            sortBy: 'sentAt',
         }
     },
     created() {
         mailService.query().then((mails) => (this.mails = mails))
+        this.unsubscribe = eventBus.on('sendNote', this.noteToMail)
+    },
+    mounted() {
     },
     methods: {
         searchFilter(filterTxt) {
@@ -92,6 +95,9 @@ export default {
             console.log(this.sortBy);
             mailService.sort(this.mails, this.sortBy)
         },
+        noteToMail(noteInfo) {
+            console.log(noteInfo);
+        }
     },
     computed: {
         mailsToShow() {
@@ -110,5 +116,7 @@ export default {
             return mails
         },
     },
-    unmounted() {},
+    unmounted() {
+        this.unsubscribe()
+    },
 }

@@ -8,6 +8,7 @@ export const mailService = {
     save,
     sendMail,
     saveDraft,
+    sort,
 }
 
 const loggedinUser = {
@@ -53,9 +54,11 @@ function saveDraft(draft) {
     return storageService.post(MAILS_KEY, draft)
 }
 
-// function sort(mails, sortBy) {
-//     if(sortBy)
-// }
+function sort(mails, sortBy) {
+    let sortedMails
+    if(sortBy === 'sentAt') sortedMails = mails.sort((a, b) => b.sentAt - a.sentAt)
+    else if(sortBy === 'subject') sortedMails = mails.sort((a, b) => a.subject.localeCompare(b.subject))
+}
 
 // function queryDrafts() {
 //     return storageService.query(DRAFTS_KEY)
