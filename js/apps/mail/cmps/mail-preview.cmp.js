@@ -1,3 +1,4 @@
+import longText from '../../../cmps/long-text.cmp.js'
 export default {
     props: ['mail'],
     template: `
@@ -21,8 +22,10 @@ export default {
             </span>
         </td>
         <div class="mail-info flex" :to="'/mail/'+mail.id">
-            <td class="subject">{{mail.subject}} <span>{{isDraft}}</span></td>
-            <td class="body">{{mail.body}}</td>
+            <td class="subject"><span>{{mail.subject}}</span><span class="draft-span">{{isDraft}}</span></td>
+            <!-- <td class="body"><long-text :txt="mail.body"/></td> -->
+            <td class="body"><span>{{mail.body}}</span></td>
+            <!-- <td class="body">{{mail.body}}</td> -->
             <td class="sent-at">{{showTime}}</td>
         </div>
         <div class="opt-btns flex space-between align-center">
@@ -40,12 +43,18 @@ export default {
     <div v-if="isMailShow" class="show-mail-preview">
         <h2>{{mail.subject}}</h2>
         <p>&lt;{{mail.to}}&gt;</p>
-        <h4>{{mail.body}}</h4>
-        <router-link class="to-full-mail-link" :to="'/mail/'+mail.id">
+        <pre>{{mail.body}}</pre>
+        <button class="to-full-mail-link" @click="showFullMail">
             <span class="material-symbols-outlined">open_in_new</span>
-        </router-link>
+        </button>
+        <!-- <router-link class="to-full-mail-link" :to="'/mail/'+mail.id">
+            <span class="material-symbols-outlined">open_in_new</span>
+        </router-link> -->
     </div>
     `,
+    components: {
+        longText,
+    },
     data() {
         return {
             isMailChecked: false,
@@ -67,6 +76,9 @@ export default {
         },
         saveChange() {
             this.$emit('save', this.mail)
+        },
+        showFullMail() {
+            this.$emit('fullMail', this.mail)
         },
     },
     computed: {

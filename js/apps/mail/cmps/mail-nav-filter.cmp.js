@@ -10,23 +10,24 @@ export default {
                 </li>
                 <li @click="setFilter('inbox')" :class="{ selected: selected === 'inbox' }">
                     <span class="material-symbols-outlined">inbox</span> 
-                    Inbox
+                    <span>Inbox</span> 
+                    <span class="unread-inbox-count">{{unreadInbox}}</span>
                 </li>
                 <li @click="setFilter('starred')" :class="{ selected: selected === 'starred' }">
                     <span class="material-symbols-outlined">star</span> 
-                    Starred
+                    <span>Starred</span>
                 </li>
                 <li @click="setFilter('sent')" :class="{ selected: selected === 'sent' }">
                     <span class="material-symbols-outlined">send</span> 
-                    Sent
+                    <span>Sent</span>
                 </li>
                 <li @click="setFilter('read')" :class="{ selected: selected === 'read' }">
                     <span class="material-symbols-outlined">drafts</span> 
-                    Read
+                    <span>Read</span>
                 </li>
                 <li @click="setFilter('drafts')" :class="{ selected: selected === 'drafts' }">
                     <span class="material-symbols-outlined">draft</span> 
-                    Drafts
+                    <span>Drafts</span>
                 </li>
             </ul>
         </section>
@@ -46,6 +47,10 @@ export default {
     computed: {
         unreadMails() {
             const unreadMails = this.mails.filter(mail => !mail.isRead)
+            return unreadMails.length
+        },
+        unreadInbox() {
+            const unreadMails = this.mails.filter(mail => !mail.isRead && !mail.isDraft)
             return unreadMails.length
         },
     },

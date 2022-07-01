@@ -2,3 +2,12 @@
     min-height: 90vh;
     position: relative;
 }
+
+.mail-list-layout {
+    width: 100%;
+    margin-inline-end: 4em;
+}
+
+.main-section {
+    width: 100%;
+}

@@ -28,6 +28,11 @@
     font-weight: 600;
 }
 
+.mail-nav li .unread-inbox-count{
+    padding: 0 0 0 4.2em;
+    font-weight: 600;
+}
+
 .mail-nav li:hover{
     background-color: var(--clr10);
     cursor: pointer;

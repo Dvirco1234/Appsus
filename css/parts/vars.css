@@ -7,7 +7,7 @@
     --clr5: rgb(49, 49, 53); /* dark text */
     --clr6: rgb(64,64,64); /* dark bgc */
     --clr7: rgba(255,255,255,0.902); /* mail bgc  */
-    --clr8: rgba(242,245,245,1); /* mail bgc clicked  */
+    --clr8: rgb(236, 236, 236); /* mail bgc clicked  */
     --clr9: rgb(241,197,72); /* checked  */
     --clr10: rgba(154, 154, 154, 0.154); /* list hover  */
     --clr11: rgb(26,114,233); /* send  */

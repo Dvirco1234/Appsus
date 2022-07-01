@@ -53,6 +53,10 @@ function saveDraft(draft) {
     return storageService.post(MAILS_KEY, draft)
 }
 
+// function sort(mails, sortBy) {
+//     if(sortBy)
+// }
+
 // function queryDrafts() {
 //     return storageService.query(DRAFTS_KEY)
 // }
