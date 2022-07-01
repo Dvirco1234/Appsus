@@ -12,17 +12,17 @@ export default {
 `,
   data() {
     return {
-      notes: [],
+      notes: null,
     }
   },
   created() {
     this.getNotesFromStorage()
     eventBus.on("noteAdd", this.addNote)
+    eventBus.on("noteUpdate", this.updateNote)
     eventBus.on("noteRemoved", this.removeNote)
   },
   methods: {
     addNote(newNote) {
-      // this.notes.unshift(newNote)
       noteService
         .addNote(newNote)
         .then((newNote) => this.notes.unshift(newNote))
@@ -34,6 +34,12 @@ export default {
       noteService.removeNote(noteId).then(() => {
         const idx = this.notes.findIndex((note) => note.id === noteId)
         this.notes.splice(idx, 1)
+      })
+    },
+    updateNote(updatedNote) {
+      noteService.save(updatedNote).then(() => {
+        const idx = this.notes.findIndex((note) => note.id === updatedNote.id)
+        this.notes.splice(idx, 1, updatedNote)
       })
     },
   },

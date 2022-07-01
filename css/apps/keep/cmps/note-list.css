@@ -3,7 +3,7 @@
 }
 
 .note-list {
-    padding: 20px;
+    padding: 4em;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     grid-gap: 20px;
@@ -13,20 +13,27 @@
 
 
 
-li {
-    list-style: none;
-}
-
-.note-img img {
-    width: 100%;
-    border-radius: 10px;
-}
-
-
 .note-index {
     text-align: center;
     margin-top: 10px;
     font-family: Roboto, Arial, sans-serif;
-    font-size: 15px;
+    font-size: 0.8em;
     color: #202124
+}
+
+.note-list .pinned {
+    position: absolute;
+    backface-visibility: hidden;
+    top: 5px;
+    right: 20px;
+    height: 1.2rem;
+    width: 1.2rem;
+    background-color: #fab005;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+    transform: rotate(45deg);
+    z-index: 1;
 }

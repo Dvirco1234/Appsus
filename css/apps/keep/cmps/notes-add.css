@@ -1,3 +1,21 @@
+.notes-add {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-inline-start: 30px;
+    margin-inline-end: 30px;
+}
+
+.notes-add input {
+    border: 1px solid var(--clr2);
+    padding: .5rem;
+    outline: none;
+    border-radius: .7em;
+}
+
+
+
 .notes-add button {
     opacity: 0.3
 }

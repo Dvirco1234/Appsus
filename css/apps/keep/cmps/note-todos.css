@@ -1,3 +1,43 @@
 .note-todos {
     margin: auto;
+    border-bottom: 3px solid var(--clr2);
+    border-top: 3px solid var(--clr2);
+    padding: 0.8em;
+}
+
+.note-todos h2 {
+    text-align: center;
+}
+
+.note-todos input {
+    background-color: inherit;
+    outline: none;
+    border: none;
+}
+
+.note-todos li .done {
+    text-decoration: line-through;
+}
+
+.note-todos ul {
+    font-family: Roboto, Arial, sans-serif;
+}
+
+.remove-todo {
+    font-size: 1rem;
+    cursor: pointer;
+    align-self: flex-start;
+}
+
+.note-todos ul li {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+
+.note-todos ul li span {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
 }

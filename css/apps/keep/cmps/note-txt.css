@@ -1,3 +1,14 @@
-/* .note-txt {
+.note-txt {
     margin: auto;
-} */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.note-txt p,
+.note-txt h2 {
+
+    flex-wrap: wrap;
+}

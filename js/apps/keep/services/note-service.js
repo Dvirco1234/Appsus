@@ -8,6 +8,7 @@ export const noteService = {
   pinNote,
   updateNote,
   getNoteById,
+  save,
 }
 
 const NOTE_KEY = "notes"
@@ -175,7 +176,7 @@ function _createNotes() {
 }
 
 function addNote(note) {
-  const { type, info, style } = note
+  const { info, style, type } = note
   const newNote = {
     type,
     info,
@@ -184,8 +185,11 @@ function addNote(note) {
       backgroundColor: "inherit",
     },
   }
-  // return storageService.post(NOTE_KEY, newNote)
-
   if (newNote.id) return storageService.put(NOTE_KEY, newNote)
   else return storageService.post(NOTE_KEY, newNote)
+}
+
+function save(note) {
+  if (note.id) return storageService.put(NOTE_KEY, note)
+  else return storageService.post(NOTE_KEY, note)
 }
