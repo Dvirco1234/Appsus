@@ -17,6 +17,20 @@
     border-radius: 10px 10px 0 0;
 }
 
+.compose-mail header h4 {
+    padding: 0 .5em;
+}
+
+.compose-mail header button {
+    padding: 0 .5em;
+    color: var(--clr3);
+    font-size: 1.5em;
+}
+
+.compose-mail header button:hover {
+    background-color: var(--clr10);
+}
+
 .compose-mail form {
     padding: 0 1em;
     flex-direction: column;
@@ -44,5 +58,26 @@
 .compose-mail .text-area {
     flex-grow: 4;
     padding: 0;
+}
 
+.compose-mail .send-btn {
+    background-color: var(--clr11);
+    color: var(--clr3);
+    padding: .7em 1.2em;
+    border-radius: .3em;
+}
+
+.compose-mail footer > * {
+    display: flex;
+    align-items: center;
+}
+
+.compose-mail .delete-btn {
+    padding: .5em .6em;
+    border-radius: 50%;
+    color: rgb(100, 100, 100);
+}
+
+.compose-mail .delete-btn:hover {
+    background-color: var(--clr10);
 }

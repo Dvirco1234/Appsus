@@ -13,14 +13,12 @@ export default {
             <mail-search-filter @filtered="searchFilter" :mails="mails"/>
             <!-- <mail-search-filter @filtered="filterMails" :mails="mails"/> -->
             <button class="compose-btn flex space-between align-center" @click="isComposing = !isComposing">
-                <span class="material-symbols-outlined">
-                    add
-                </span> Compose</button>
+                <span class="material-symbols-outlined">add</span>Compose</button>
             <compose-mail v-if="isComposing" @sent="sendMail" @saveDraft="saveMailDraft" 
-            :draft="draft" @closed="toggleCompose"/>
+            :draft="draft" @closed="toggleCompose" @deleteDraft="deleteMailDraft"/>
             <div class="main-section flex">
                 <mail-nav-filter @filtered="navFilter" :mails="mails"/>
-                <mail-list :mails="mailsToShow" @deleted="deleteMail"/>
+                <mail-list :mails="mailsToShow" @deleted="deleteMail" @save="saveMail"/>
             </div>
         </section>
     `,
@@ -33,7 +31,6 @@ export default {
     data() {
         return {
             mails: [],
-            // filterBy: null,
             isComposing: false,
             draft: null,
             filterSearch: '',
@@ -44,11 +41,6 @@ export default {
         mailService.query().then((mails) => (this.mails = mails))
     },
     methods: {
-        // filterMails(filter, filterBy = 'txt') {
-        //     if(!filter) return 
-        //     if(!this.filterBy) this.filterBy = {}
-        //     this.filterBy[filterBy] = filter
-        // },
         searchFilter(filterTxt) {
             this.filterSearch = filterTxt
         },
@@ -64,10 +56,6 @@ export default {
                 this.mails.splice(idx, 1)
             })
         },
-        // filterMails(filter, filterBy) {
-        //     if(!this.filterBy) this.filterBy = {}
-        //     this.filterBy[filterBy] = filter
-        // },
         sendMail(mail) {
             mailService.sendMail(mail)
                 .then(() => {
@@ -83,8 +71,14 @@ export default {
                     this.draft = draft
                 })
         },
+        deleteMailDraft(draftId) {
+            mailService.remove(draftId)
+        },
         toggleCompose() {
             this.isComposing = !this.isComposing
+        },
+        saveMail(mail) {
+            mailService.save(mail)
         },
     },
     computed: {
@@ -98,31 +92,11 @@ export default {
             else if(nav === 'inbox') mails = mails.filter((mail) => !mail.isDraft)
             else if(nav === 'starred') mails = mails.filter((mail) => mail.isStarred)
             else if(nav === 'sent') mails = mails.filter((mail) => mail.isSent)
+            else if(nav === 'read') mails = mails.filter((mail) => mail.isRead)
             else if(nav === 'drafts') mails = mails.filter((mail) => mail.isDraft)
 
-            
             return mails
         },
-        // mailsToShow() {
-        //     if (!this.filterBy) return this.mails
-        //     const regex = new RegExp(this.filterBy.txt, 'i')
-        //     let mails = this.mails
-        //     mails = mails.filter((mail) => regex.test(mail.subject) || regex.test(mail.body))
-        //     // mails = mails.filter((mail) => regex.test(mail.subject) || regex.test(mail.body))
-        //     return mails
-        // },
-
-        // carsForDisplay() {
-        //     var cars = this.cars
-        //     if (this.filterBy?.vendor) {
-        //         const regex = new RegExp(this.filterBy.vendor, 'i')
-        //         cars = cars.filter(car => regex.test(car.vendor))
-        //     }
-        //     if (this.filterBy?.minSpeed) {
-        //         cars = cars.filter(car => car.maxSpeed >= this.filterBy.minSpeed)
-        //     }
-        //     return cars
-        // }
     },
     unmounted() {},
 }
