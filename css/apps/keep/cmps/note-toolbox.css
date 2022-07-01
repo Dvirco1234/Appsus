@@ -1,5 +1,6 @@
 .note-tools {
     background-color: inherit;
+    border-top: 1px solid var(--clr2);
 }
 
 

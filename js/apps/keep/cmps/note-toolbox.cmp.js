@@ -27,6 +27,10 @@ export default {
     return {}
   },
   methods: {
+    sendToMail() {
+      console.log("send")
+      eventBus.emit("sendNote", this.note)
+    },
     pinNote() {
       const newNote = this.clone()
       console.log(newNote)

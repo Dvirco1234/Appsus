@@ -42,14 +42,26 @@ export default {
             draft: null,
             filterSearch: '',
             filterNav: null,
-            sortBy: 'sentAt',
+            sortBy: null,
         }
     },
     created() {
         mailService.query().then((mails) => (this.mails = mails))
-        this.unsubscribe = eventBus.on('sendNote', this.noteToMail)
     },
-    mounted() {
+    data() {
+        return {
+            mails: [],
+            isComposing: false,
+            draft: null,
+            filterSearch: '',
+            filterNav: null,
+            sortBy: 'sentAt',
+        }
+    },
+    mounted() {},
+    created() {
+        mailService.query().then((mails) => (this.mails = mails))
+        this.unsubscribe = eventBus.on('sendNote', this.noteToMail)
     },
     methods: {
         searchFilter(filterTxt) {
@@ -59,28 +71,25 @@ export default {
             this.filterNav = by
         },
         deleteMail(id) {
-            mailService.remove(id)
-            .then(() => {
-                console.log('delete success');
+            mailService.remove(id).then(() => {
+                console.log('delete success')
                 showSuccessMsg('Deleted successfully')
                 const idx = this.mails.findIndex((mail) => mail.id === id)
                 this.mails.splice(idx, 1)
             })
         },
         sendMail(mail) {
-            mailService.sendMail(mail)
-                .then(() => {
-                    console.log('send success');
-                    showSuccessMsg('Sent successfully')
-                    this.mails.unshift(mail)
-                })
+            mailService.sendMail(mail).then(() => {
+                console.log('send success')
+                showSuccessMsg('Sent successfully')
+                this.mails.unshift(mail)
+            })
             this.isComposing = !this.isComposing
         },
         saveMailDraft(draft) {
-            mailService.saveDraft(draft)
-                .then(() => {
-                    this.draft = draft
-                })
+            mailService.saveDraft(draft).then(() => {
+                this.draft = draft
+            })
         },
         deleteMailDraft(draftId) {
             mailService.remove(draftId)
@@ -92,31 +101,32 @@ export default {
             mailService.save(mail)
         },
         sortMails() {
-            console.log(this.sortBy);
+            console.log(this.sortBy)
             mailService.sort(this.mails, this.sortBy)
         },
         noteToMail(noteInfo) {
-            console.log(noteInfo);
-        }
+            console.log(noteInfo)
+        },
     },
     computed: {
         mailsToShow() {
             let mails = this.mails
-            if(!this.filterSearch) mails = this.mails
+            if (!this.filterSearch) mails = this.mails
             const regex = new RegExp(this.filterSearch, 'i')
             mails = mails.filter((mail) => regex.test(mail.subject) || regex.test(mail.body))
             const nav = this.filterNav
-            if(nav === 'all') mails = mails
-            else if(nav === 'inbox') mails = mails.filter((mail) => !mail.isDraft)
-            else if(nav === 'starred') mails = mails.filter((mail) => mail.isStarred)
-            else if(nav === 'sent') mails = mails.filter((mail) => mail.isSent)
-            else if(nav === 'read') mails = mails.filter((mail) => mail.isRead)
-            else if(nav === 'drafts') mails = mails.filter((mail) => mail.isDraft)
+            if (nav === 'all') mails = mails
+            else if (nav === 'inbox') mails = mails.filter((mail) => !mail.isDraft)
+            else if (nav === 'starred') mails = mails.filter((mail) => mail.isStarred)
+            else if (nav === 'sent') mails = mails.filter((mail) => mail.isSent)
+            else if (nav === 'read') mails = mails.filter((mail) => mail.isRead)
+            else if (nav === 'drafts')
+                mails = mails.filter((mail) => mail.isDraft)
 
             return mails
         },
-    },
-    unmounted() {
-        this.unsubscribe()
+        unmounted() {
+            this.unsubscribe()
+        },
     },
 }

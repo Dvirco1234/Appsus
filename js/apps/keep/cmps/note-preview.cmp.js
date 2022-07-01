@@ -18,7 +18,9 @@ export default {
 </div>
   `,
   data() {
-    return {}
+    return {
+      isUpdate: false,
+    }
   },
   created() {},
   computed: {
@@ -29,6 +31,7 @@ export default {
   methods: {
     updateNote() {
       console.log("updating")
+      this.isUpdate = true
     },
   },
   components: {

@@ -1,4 +1,13 @@
 iframe {
-    width: 250px;
+    max-width: 100%;
     border-radius: 10px;
+    margin: auto;
+    object-fit: cover;
+    height: 200px;
+}
+
+.note-video {}
+
+.ytp-title-text {
+    font-size: 10px;
 }
