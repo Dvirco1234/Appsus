@@ -1,0 +1,38 @@
+.mail-details {
+    /* background-color: aqua; */
+    width: 100%;
+}
+
+.full-mail-container {
+    position: relative;
+    background-color: var(--clr1);
+    padding: 3em 4em;
+    min-height: 50vh;
+}
+
+.full-mail-container pre{
+    font-family: Roboto-Regular;
+    max-width: 70vw;
+    /* text-overflow: ellipsis; */
+    overflow: hidden;
+    white-space: pre-wrap;
+}
+
+.back-btn, .delete-btn{
+    position: absolute;
+    padding: .5em .6em;
+    top: 1em;
+    border-radius: 50%;
+}
+
+.back-btn {
+    left: 1em;
+}
+
+.delete-btn {
+    right: 1em;
+}
+
+.back-btn:hover, .delete-btn:hover {
+    background-color: var(--clr10);
+}

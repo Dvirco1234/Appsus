@@ -11,7 +11,14 @@ export default {
     template: `
         <section class="main-layout">
             <mail-search-filter @filtered="searchFilter" :mails="mails"/>
-            <!-- <mail-search-filter @filtered="filterMails" :mails="mails"/> -->
+            <div class="sort-mails">
+                <select name="Sort" id="sort" v-model="sortBy" @change="sortMails">
+                    <option value="new">New</option>
+                    <option value="old">Old</option>
+                    <option value="a">A-Z</option>
+                    <option value="z">Z-A</option>
+                </select>
+            </div>
             <button class="compose-btn flex space-between align-center" @click="isComposing = !isComposing">
                 <span class="material-symbols-outlined">add</span>Compose</button>
             <compose-mail v-if="isComposing" @sent="sendMail" @saveDraft="saveMailDraft" 
@@ -35,6 +42,7 @@ export default {
             draft: null,
             filterSearch: '',
             filterNav: null,
+            sortBy: null,
         }
     },
     created() {
@@ -79,6 +87,10 @@ export default {
         },
         saveMail(mail) {
             mailService.save(mail)
+        },
+        sortMails() {
+            console.log(this.sortBy);
+            mailService.sort(this.mails, this.sortBy)
         },
     },
     computed: {

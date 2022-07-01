@@ -13,3 +13,21 @@
     font-weight: 600;
     margin-inline-end: .2em;
 }
+
+.sort-mails select {
+    position: absolute;
+    top: 0;
+    right: 4em;
+    border: none;
+    color: var(--clr5);
+    outline: none;
+    background-color: var(--clr10);
+    padding: .7em .5em;
+    font-size: 1em;
+    border-radius: .4em;
+}
+
+.sort-mails option {
+    padding: 2em .5em;
+}
+
