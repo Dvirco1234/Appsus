@@ -4,12 +4,12 @@ export default {
     template: `
     <section v-if="mail" class="preview-container flex align-center" :class="isReadBgc" @click="openMail" @click.stop="saveChange">
         <td class="choose-mail flex align-center" title="Check mail" @click.stop="isMailChecked = !isMailChecked">
-                <span v-if="!isMailChecked" class="material-symbols-outlined">
-                    check_box_outline_blank
-                </span>
-                <span v-else class="material-symbols-outlined">
-                    check_box
-                </span>
+            <span v-if="!isMailChecked" class="material-symbols-outlined">
+                check_box_outline_blank
+            </span>
+            <span v-else class="material-symbols-outlined">
+                check_box
+            </span>
         </td>
         <td class="star flex align-center" :title="checkIfStarred" @click.stop="mail.isStarred = !mail.isStarred" @click.stop="saveChange"> 
             <span class="material-symbols-outlined" :class="{checked: mail.isStarred}">

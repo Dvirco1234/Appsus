@@ -20,10 +20,6 @@
 @import 'apps/mail/cmps/compose-mail.css';
 @import 'apps/mail/cmps/mail-filters.css';
 @import 'apps/mail/cmps/mail-details.css';
-/* @import 'cmps/mail-details.css';
-@import 'cmps/mail-add.css';
-@import 'cmps/review.css';
-@import 'cmps/msg.css'; */
 
 /* KEEP */
 @import 'apps/keep/cmps/note-list.css';
@@ -35,4 +31,12 @@
 @import 'apps/keep/cmps/note-txt.css';
 @import 'apps/keep/cmps/note-img.css';
 @import 'apps/keep/cmps/notes-add.css';
+
 /* BOOKS */
+
+@import 'apps/books/cmps/book-list.css';
+@import 'apps/books/cmps/book-preview.css';
+@import 'apps/books/cmps/book-details.css';
+@import 'apps/books/cmps/book-add.css';
+@import 'apps/books/cmps/review.css';
+@import 'apps/books/cmps/main-app.css';

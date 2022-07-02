@@ -27,12 +27,12 @@ export default {
               <h4>Keep</h4>
             </div>
           </router-link>
-                    <!-- <div class="r-link flex space-between align-center">
-            <router-link to="/book">
-              <span class="material-symbols-outlined">text_snippet</span>
-              Books
-            </router-link>
-          </div> -->
+          <router-link to="/book" class="r-link flex align-center">
+            <div class="link-content" @click="toggleNav">
+              <span class="material-symbols-outlined">import_contacts</span>
+              <h4>Books</h4>
+            </div>
+          </router-link>
         </div>
         <div class="screen" :class="{open: isLinksOpen}" @click="isLinksOpen = false"></div>
       </nav>
