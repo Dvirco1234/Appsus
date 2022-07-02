@@ -25,11 +25,10 @@ export default {
   methods: {
     addNote() {
       const videoId = this.matchYoutubeUrl(this.url)
+      console.log(videoId)
       // const videoUrl = `https://www.youtube.com/embed/${videoId}`
       if (!videoId) return
-
       this.note.info.videoId = videoId
-
       this.$emit("noteAdd", this.note)
     },
     matchYoutubeUrl(url) {
@@ -42,12 +41,3 @@ export default {
   computed: {},
   unmounted() {},
 }
-
-// function extractVideoID(url) {
-//   var regExp =
-//     /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/
-//   var match = url.match(regExp)
-//   if (match && match[7].length == 11) {
-//     return match[7]
-//   }
-// }

@@ -5,8 +5,7 @@
     align-items: center;
     margin-inline-start: 30px;
     margin-inline-end: 30px;
-    padding: 0.5rem;
-    font-size: 1rem;
+    padding: 1rem;
     border-bottom: 1px solid var(--clr5);
 }
 
@@ -15,6 +14,7 @@
     padding: .5rem;
     outline: none;
     border-radius: .7em;
+    font-size: 1rem;
 }
 
 .notes-add button {
@@ -24,5 +24,3 @@
 .notes-add button:hover {
     opacity: 1;
 }
-
-.add-btn-container {}

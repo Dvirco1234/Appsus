@@ -1,54 +1,41 @@
 .note-todos {
-    margin: auto;
-    border-bottom: 3px solid var(--clr2);
-    border-top: 3px solid var(--clr2);
     padding: 0.8em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .note-todos h2 {
-    text-align: center;
+    align-self: center;
+    width: 100%;
+    border-bottom: 1px solid var(--clr5);
+    margin-bottom: 5px;
 }
 
 .note-todos input {
     background-color: inherit;
     outline: none;
     border: none;
+    border-top: 1px solid var(--clr5);
+    padding: 5px;
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 1rem;
 }
 
 .note-todos li .done {
     text-decoration: line-through;
 }
 
-.note-todos ul {
-    font-family: Roboto, Arial, sans-serif;
-    text-align: left;
-
-}
-
 .remove-todo {
-    font-size: 1.5rem;
+    font-size: 1rem;
     cursor: pointer;
-
 }
 
 .remove-todo:hover {
     color: red;
 }
 
-.note-todos ul li {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-bottom: 1rem;
-    font-size: 1rem;
-}
-
-
-.note-todos ul li span {
+.todoLine {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    margin-bottom: .4rem;
 }

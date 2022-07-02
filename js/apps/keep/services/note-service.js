@@ -102,7 +102,7 @@ function _createNotes() {
         id: utilService.makeId(),
         type: "note-img",
         info: {
-          title: "Me working on new framework without Async system",
+          title: "Me Building  new framework without Async system",
           url: "https://images.pexels.com/photos/4709289/pexels-photo-4709289.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         },
         style: {

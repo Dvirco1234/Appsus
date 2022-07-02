@@ -6,9 +6,9 @@ export default {
 <section class="note-todos" @click.stop>
      <h2> {{note.info.label}}</h2>
        <ul>
-            <li v-for="(todo, idx) in note.info.todos" >
+            <li v-for="(todo, idx) in note.info.todos" class="todoLine" >
               <span :class="{ done: todo.isDone }" @click="toggleIsDone(idx)">{{ todo.txt }}</span>
-              <span @click="removeTodo(idx)" class="remove-todo">X</span>
+              <span @click="removeTodo(idx)" class="material-symbols-outlined remove-todo">delete</span>  
             </li>
        </ul>
        <input v-model="todoTxt" type="text" placeholder="Add todo" @keyup.enter="addTodo">
