@@ -8,3 +8,7 @@
     src: url(../../fonts/Roboto/Roboto-Bold.ttf);
 }
 
+@font-face {
+    font-family: Product-sans;
+    src: url(../../fonts/ProductSans/Product-Sans-Regular.ttf);
+}

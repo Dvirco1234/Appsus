@@ -1,18 +1,25 @@
 import { noteService } from "../services/note-service.js"
+import { eventBus } from "../../../services/eventBus-service.js"
+
+import noteFilter from "../cmps/note-filter.cmp.js"
 import noteList from "../cmps/note-list.cmp.js"
 import addNote from "../cmps/add-note.cmp.js"
-import { eventBus } from "../../../services/eventBus-service.js"
 
 export default {
   template: `
   <section class="note-index main-layout">
-  <add-note @newNote="addNote" />
-  <note-list v-if="notes" :notes="notes"/> 
-    </section>
+      <add-note @newNote="addNote" />
+      <note-filter @filter="setFilter" />
+      <note-list v-if="notes" :notes="notesToDisplay"/> 
+  </section>
 `,
   data() {
     return {
       notes: null,
+      filterBy: {
+        txt: "",
+        type: "",
+      },
     }
   },
   created() {
@@ -20,7 +27,10 @@ export default {
     eventBus.on("noteAdd", this.addNote)
     eventBus.on("noteUpdate", this.updateNote)
     eventBus.on("noteRemoved", this.removeNote)
-    this.unsubscribe = eventBus.on('mailToNote', this.mailToNote)
+
+    this.unsubscribe = eventBus.on("mailToNote", this.mailToNote)
+
+    this.filterBy.type = "all"
   },
   methods: {
     addNote(newNote) {
@@ -38,7 +48,7 @@ export default {
       })
     },
     mailToNote(mail) {
-      console.log(mail);
+      console.log(mail)
     },
     updateNote(updatedNote) {
       noteService.save(updatedNote).then(() => {
@@ -46,11 +56,35 @@ export default {
         this.notes.splice(idx, 1, updatedNote)
       })
     },
+    setFilter({ type }) {
+      this.filterBy.type = type
+      console.log(type)
+      // this.filterBy.txt = ""
+      // if (txt) this.filterBy.txt = txt
+      // if (type) this.filterBy.type = type === "all" ? "" : type
+    },
   },
-  computed: {},
+  computed: {
+    notesToDisplay() {
+      let notes = this.notes
+      if (this.filterBy.type === "all") return (notes = this.notes)
+      const { type } = this.filterBy
+      if (type) return (notes = notes.filter((note) => note.type === type))
+      // if (txt) {
+      //   const regex = new RegExp(txt, "i")
+      //   notes = notes.filter(
+      //     (note) =>
+      //       regex.test(note.info.title) ||
+      //       regex.test(note.info.txt) ||
+      //       note.info.todos?.some((todo) => regex.test(todo.txt))
+      //   )
+      // }
+    },
+  },
   components: {
     noteList,
     addNote,
+    noteFilter,
   },
   unmounted() {
     this.unsubscribe()

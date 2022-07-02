@@ -1,7 +1,7 @@
 .note-preview {
     display: flex;
     flex-direction: column;
-    margin: 0 1rem 1rem 0;
+    margin: auto 1rem;
     align-items: center;
     justify-content: space-between;
     border: 1px solid var(--clr2);
@@ -13,6 +13,7 @@
 }
 
 .note-img img {
-    width: 100%;
+    width: 90%;
     border-radius: 10px;
+    margin-top: 5px;
 }

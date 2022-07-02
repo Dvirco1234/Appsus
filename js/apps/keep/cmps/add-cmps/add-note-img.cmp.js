@@ -3,7 +3,6 @@ export default {
   <section class="add-note-img">
     <input type="text" v-model="note.info.title"  placeholder="choose image title">
              <input type="url" v-model="note.info.url" placeholder="Add image url" @keyup.enter="addImage">
- 
    </section>
       `,
   data() {

@@ -5,10 +5,13 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    margin: auto;
 }
 
 .note-txt p,
 .note-txt h2 {
-
     flex-wrap: wrap;
+    line-height: 2.5rem;
+    font-size: 1rem;
+    margin: auto 1rem;
 }

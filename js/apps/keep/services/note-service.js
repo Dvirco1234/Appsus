@@ -12,6 +12,7 @@ export const noteService = {
 }
 
 const NOTE_KEY = "notes"
+const YOUTUBE_KEY = "AIzaSyD0X6HKAWgMgjqn73SNcFmum4FNdh95oPs"
 _createNotes()
 
 function query() {
@@ -66,83 +67,99 @@ function _createNotes() {
     notes = [
       {
         id: utilService.makeId(),
-        type: "note-txt",
-        isPinned: true,
+        type: "note-img",
         info: {
-          txt: "Fullstack Me Baby!",
-          title: "but slowly please...",
+          url: "https://images.pexels.com/photos/3760044/pexels-photo-3760044.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          title: " Me before Sprint",
         },
         style: {
-          backgroundColor: "inherit",
+          backgroundColor: "#FAFDD6",
         },
       },
       {
         id: utilService.makeId(),
         type: "note-img",
         info: {
-          url: "https://images.unsplash.com/photo-1498598457418-36ef20772bb9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
-          title: "Bobi ",
+          url: "https://images.pexels.com/photos/4226215/pexels-photo-4226215.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          title: " Me during the Sprint",
         },
         style: {
-          backgroundColor: "inherit",
+          backgroundColor: "#E6BA95",
+        },
+      },
+      {
+        id: utilService.makeId(),
+        type: "note-img",
+        info: {
+          url: "https://images.pexels.com/photos/3799821/pexels-photo-3799821.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          title: " Me after the Sprint",
+        },
+        style: {
+          backgroundColor: "#A2B38B",
+        },
+      },
+      {
+        id: utilService.makeId(),
+        type: "note-img",
+        info: {
+          title: "Me working on new framework without Async system",
+          url: "https://images.pexels.com/photos/4709289/pexels-photo-4709289.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        },
+        style: {
+          backgroundColor: "#E6BA95",
+        },
+      },
+      {
+        id: utilService.makeId(),
+        type: "note-txt",
+        isPinned: true,
+        info: {
+          title: "Note to myself",
+          txt: "Bootstrap buttons just looks tasty, DONT think of eating them!",
+        },
+        style: {
+          backgroundColor: "#A2B38B",
         },
       },
       {
         id: utilService.makeId(),
         type: "note-todos",
         info: {
-          label: "Get my stuff together",
+          label: "Build new Framework",
           todos: [
-            { txt: "Driving liscence", doneAt: null },
-            { txt: "Coding power", doneAt: 187111111 },
+            {
+              id: 101,
+              txt: "Understanding how to code more than 15K lines",
+              doneAt: null,
+              isDone: false,
+            },
+            { id: 102, txt: "Go to sleep", doneAt: 187111111, isDone: false },
           ],
         },
         style: {
-          backgroundColor: "inherit",
+          backgroundColor: "#E6BA95",
         },
       },
       {
         id: utilService.makeId(),
         type: "note-video",
         info: {
-          url: "https://www.youtube.com/embed/jxi0ETwDvws",
+          videoId: "jxi0ETwDvws",
           title: "Bug in the javascript",
         },
         style: {
-          backgroundColor: "inherit",
-        },
-      },
-      {
-        id: utilService.makeId(),
-        type: "note-video",
-        info: {
-          url: "https://www.youtube.com/embed/woFCtpMXNNc",
-          title: "Bug in the javascript",
-        },
-        style: {
-          backgroundColor: "inherit",
+          backgroundColor: "#EF9F9F",
         },
       },
       {
         id: utilService.makeId(),
         type: "note-img",
         info: {
-          url: "https://images.unsplash.com/photo-1472457897821-70d3819a0e24?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869&q=80",
-          title: "Bobi and Me",
+          url: "https://images.pexels.com/photos/5380641/pexels-photo-5380641.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          title: "Me and dvir Trying to fight bugs",
         },
         style: {
-          backgroundColor: "inherit",
-        },
-      },
-      {
-        id: utilService.makeId(),
-        type: "note-img",
-        info: {
-          url: "https://images.unsplash.com/photo-1507808973436-a4ed7b5e87c9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80",
-          title: " Me",
-        },
-        style: {
-          backgroundColor: "inherit",
+          backgroundColor: "#CDC2AE",
         },
       },
       {
@@ -151,10 +168,10 @@ function _createNotes() {
         isPinned: true,
         info: {
           txt: "If no me to me, who me?",
-          title: "kabab-case",
+          title: "Always remember!",
         },
         style: {
-          backgroundColor: "inherit",
+          backgroundColor: "#ECE5C7",
         },
       },
       {
@@ -162,11 +179,10 @@ function _createNotes() {
         type: "note-audio",
         isPinned: true,
         info: {
-          url: "audio/timbaland.mp3",
+          url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
         },
         style: {
-          backgroundColor: "inherit",
-          height: "100px",
+          backgroundColor: "#A2B38B",
         },
       },
     ]
@@ -182,7 +198,7 @@ function addNote(note) {
     info,
     isPinned: false,
     style: style || {
-      backgroundColor: "inherit",
+      backgroundColor: "#C2DED1",
     },
   }
   if (newNote.id) return storageService.put(NOTE_KEY, newNote)

@@ -2,7 +2,7 @@
     color: var(--clr3);
     padding: 0.7em;
     border-bottom: 1px solid var(--clr2);
-    background-color: var(--clr6);
+    background: linear-gradient(rgba(126, 78, 91, 1) 0%, rgba(58, 8, 23, 0.93) 100%);
 }
 
 .header-nav .apps-icon {

@@ -11,29 +11,19 @@
     margin-inline-end: 30px;
 }
 
-
-
 .note-index {
     text-align: center;
     margin-top: 10px;
     font-family: Roboto, Arial, sans-serif;
-    font-size: 0.8em;
     color: #202124
 }
 
-.note-list .pinned {
-    position: absolute;
-    backface-visibility: hidden;
-    top: 5px;
-    right: 20px;
-    height: 1.2rem;
-    width: 1.2rem;
-    background-color: #fab005;
-    border-radius: 50%;
+.note-audio {
+    max-width: 250px;
     display: flex;
-    justify-content: center;
     align-items: center;
-    font-size: 0.8rem;
-    transform: rotate(45deg);
-    z-index: 1;
+}
+
+.audio {
+    margin: 1rem;
 }

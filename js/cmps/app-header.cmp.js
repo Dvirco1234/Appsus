@@ -1,8 +1,8 @@
 export default {
-    template: `
+  template: `
     <header class="app-header flex space-between align-center">
     <div class="logo">
-        <router-link to="/"><h3>appsus</h3></router-link>
+        <router-link to="/"><h2 class="logo">Appsus</h2></router-link>
       </div>
       <nav class="header-nav">
         <button class="apps-icon flex" @click="toggleNav">
@@ -38,15 +38,15 @@ export default {
       </nav>
     </header>
     `,
-    data() {
-        return {
-            isLinksOpen: false,
-        }
+  data() {
+    return {
+      isLinksOpen: false,
+    }
+  },
+  methods: {
+    toggleNav() {
+      this.isLinksOpen = !this.isLinksOpen
     },
-    methods: {
-        toggleNav() {
-            this.isLinksOpen = !this.isLinksOpen
-        },
-    },
-    computed: {},
+  },
+  computed: {},
 }

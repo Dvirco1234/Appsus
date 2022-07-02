@@ -6,5 +6,4 @@ export default {
         <img :src="note.info.url" />
     </section>
   `,
-  computed: {},
 }

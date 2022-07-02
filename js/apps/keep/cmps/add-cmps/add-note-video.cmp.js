@@ -1,13 +1,11 @@
-import { eventBus } from "../../../../services/eventBus-service.js"
-
 export default {
   template: ` 
       <section class="note-add" @keyup.enter="addNote">
         <div>
         <input type="text"
                 v-model="note.info.title"
-                placeholder="add title">
-          <input v-model="note.info.url" type="url" placeholder="add video url">
+                placeholder="Add video title...">
+          <input v-model="url" type="url" placeholder="Add video url...">
         </div>
       </section>
   `,
@@ -17,30 +15,39 @@ export default {
         type: "note-video",
         info: {
           title: "",
-          url: "",
+          videoId: "",
         },
+        url: "",
       },
     }
   },
   created() {},
   methods: {
     addNote() {
-      const videoId = this.matchYoutubeUrl(this.note.info.url)
-      const videoUrl = `https://www.youtube.com/embed/${videoId}`
-      console.log(videoUrl)
-      this.note.info.url = videoUrl
-      eventBus.emit("noteAdd", this.note)
-      this.$emit("noteAdd")
+      const videoId = this.matchYoutubeUrl(this.url)
+      // const videoUrl = `https://www.youtube.com/embed/${videoId}`
+      if (!videoId) return
+
+      this.note.info.videoId = videoId
+
+      this.$emit("noteAdd", this.note)
     },
     matchYoutubeUrl(url) {
-      var regExp =
+      const regExp =
         /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/
-
-      return url.match(regExp) && url.match(regExp)[7].length == 11
-        ? url.match(regExp)[7]
-        : null
+      const match = url.match(regExp)
+      return match && match[7].length == 11 ? match[7] : null
     },
   },
   computed: {},
   unmounted() {},
 }
+
+// function extractVideoID(url) {
+//   var regExp =
+//     /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/
+//   var match = url.match(regExp)
+//   if (match && match[7].length == 11) {
+//     return match[7]
+//   }
+// }

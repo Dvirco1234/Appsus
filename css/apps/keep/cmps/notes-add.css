@@ -1,10 +1,13 @@
 .notes-add {
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin-inline-start: 30px;
     margin-inline-end: 30px;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-bottom: 1px solid var(--clr5);
 }
 
 .notes-add input {
@@ -14,8 +17,6 @@
     border-radius: .7em;
 }
 
-
-
 .notes-add button {
     opacity: 0.3
 }
@@ -23,3 +24,5 @@
 .notes-add button:hover {
     opacity: 1;
 }
+
+.add-btn-container {}

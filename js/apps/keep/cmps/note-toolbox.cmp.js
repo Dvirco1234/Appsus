@@ -1,14 +1,15 @@
 import { eventBus } from "../../../services/eventBus-service.js"
+import noteColorBgc from "./note-color-bgc.cmp.js"
 
 export default {
   template: `
-        <section class="note-tools">
+        <section class="note-tools" @click.stop>
           <button @click="pinNote">
               <span class="material-symbols-outlined">push_pin</span>
           </button>
-          <button @click="changeBgc">
+          <button @click="isChangeBgc=!isChangeBgc" class="note-toolbox-color">
               <span class="material-symbols-outlined">palette</span>
-          </button>
+            </button>
           <button @click="$emit('update')">
               <span class="material-symbols-outlined">edit_note</span>    
           </button>
@@ -18,13 +19,19 @@ export default {
           <button @click="removeNote">
               <span class="material-symbols-outlined">delete</span>  
           </button>
+          <button @click="sendToMail"> 
+              <router-link to="/mail/"> 
+                  <span class="send-mail-btn material-symbols-outlined">send</span>
+              </router-link>
           </button>
-          <button @click="sendToMail"> <router-link to="/mail/"> Send </router-link></button>
+          <note-color-bgc v-if="isChangeBgc" @picked="changeBgc" />
         </section>
   `,
   props: ["note"],
   data() {
-    return {}
+    return {
+      isChangeBgc: false,
+    }
   },
   methods: {
     sendToMail() {
@@ -37,11 +44,9 @@ export default {
       newNote.isPinned = !newNote.isPinned
       eventBus.emit("selected", newNote)
     },
-
     clone() {
       return JSON.parse(JSON.stringify(this.note))
     },
-
     addClone() {
       const newNote = this.clone()
       eventBus.emit("noteAdd", newNote)
@@ -50,14 +55,16 @@ export default {
       eventBus.emit("noteRemoved", this.note.id)
     },
     changeBgc(color) {
-      const cloneNote = this.clone()
-      cloneNote.style.backgroundColor = color
-      console.log("change bgc")
+      console.log(color)
+      this.note.style.backgroundColor = color
+      eventBus.emit("noteUpdate", this.note)
     },
-    sendToMail(){
-        eventBus.emit("sendNote", this.note.info)
-    }
+    sendToMail() {
+      eventBus.emit("sendNote", this.note.info)
+    },
   },
-  computed: {},
+  components: {
+    noteColorBgc,
+  },
   created() {},
 }

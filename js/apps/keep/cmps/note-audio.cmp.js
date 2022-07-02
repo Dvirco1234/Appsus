@@ -1,11 +1,10 @@
 export default {
   props: ["note"],
   template: `
-  <section class="note-audio">
-  <audio controls>
-  <source :src="note.info.url" type="audio/ogg">
-  <source :src="note.info.url" type="audio/mpeg">
-  </audio>
-  </section>
-  `,
+    <section class="note-audio">
+      <audio controls class="audio">
+        <source :src="note.info.url" />
+      </audio>
+    </section>
+`,
 }
