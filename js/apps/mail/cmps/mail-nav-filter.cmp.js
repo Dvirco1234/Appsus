@@ -3,12 +3,12 @@ export default {
     template: `
         <section class="mail-nav">
             <ul>
-                <li @click="setFilter('all')" :class="{ selected: selected === 'all' }">
+                <li @click="setFilter('all')" :class="{ selected: selected === 'all' }" :title="unreadMails + ' Unread mails'">
                     <span class="material-symbols-outlined">mail</span> 
                     <span>All</span>
                     <span class="unread-count">{{unreadMails}}</span>
                 </li>
-                <li @click="setFilter('inbox')" :class="{ selected: selected === 'inbox' }">
+                <li @click="setFilter('inbox')" :class="{ selected: selected === 'inbox' }" :title="unreadInbox + ' Unread mails'">
                     <span class="material-symbols-outlined">inbox</span> 
                     <span>Inbox</span> 
                     <span class="unread-inbox-count">{{unreadInbox}}</span>
@@ -28,6 +28,10 @@ export default {
                 <li @click="setFilter('drafts')" :class="{ selected: selected === 'drafts' }">
                     <span class="material-symbols-outlined">draft</span> 
                     <span>Drafts</span>
+                </li>
+                <li @click="setFilter('trash')" :class="{ selected: selected === 'trash' }">
+                <span class="material-symbols-outlined">restore_from_trash</span> 
+                    <span>Trash</span>
                 </li>
             </ul>
         </section>

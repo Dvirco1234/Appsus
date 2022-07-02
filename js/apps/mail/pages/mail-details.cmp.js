@@ -9,7 +9,9 @@ export default {
                 <span class="material-symbols-outlined">arrow_back</span>
             </button>
             <button class="save-as-note-btn" @click="saveAsNote" title="Save mail as note">
-                <router-link to="/keep"><span class="material-symbols-outlined">save</span></router-link>
+                <router-link to="/keep" class="link">
+                    <span class="material-symbols-outlined">file_upload</span>
+                </router-link>
             </button>
             <button class="delete-btn" @click="deleteMail" title="Delete mail">
                 <span class="material-symbols-outlined">delete</span>

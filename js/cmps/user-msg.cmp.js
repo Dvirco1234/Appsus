@@ -1,17 +1,15 @@
 import { eventBus } from "../services/eventBus-service.js";
 export default {
     template: `
- <section v-if="msg" class="user-msg flex" :class="msg.type">
-    <div class="message">
-        <h3>{{msgToUpper}}</h3>
-        <p class="msg-txt">Book 
-            <router-link  :to="'/book/'+msg.bookId">{{msg.name}}</router-link> 
-            {{msg.txt}}</p>
-        
-    </div> 
-    <button @click="msg = null">x</button>
- </section>
-`,
+    <section v-if="msg" class="user-msg flex space-between align-center" :class="msg.type">
+        <div class="message">
+            <p class="msg-txt">{{msg.txt}}</p>
+        </div> 
+        <button @click="msg = null" class="flex align-center">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+    </section>
+    `,
     data() {
         return {
             unsubscribe: null,
@@ -26,14 +24,10 @@ export default {
             this.msg = msg
             setTimeout(() => {
                 this.msg = null
-            }, 15000)
+            }, 10000)
         }
     },
-    computed: {
-        msgToUpper(){
-            return this.msg.type.toUpperCase() + '!'
-        },
-    },
+    computed: {},
     unmounted() {
         this.unsubscribe()
     },

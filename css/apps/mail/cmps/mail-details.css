@@ -18,7 +18,7 @@
     white-space: pre-wrap;
 }
 
-.back-btn, .delete-btn{
+.back-btn, .delete-btn, .save-as-note-btn{
     position: absolute;
     padding: .5em .6em;
     top: 1em;
@@ -33,6 +33,14 @@
     right: 1em;
 }
 
-.back-btn:hover, .delete-btn:hover {
+.save-as-note-btn {
+    right: 4em;
+}
+
+.save-as-note-btn .link{
+    color: black;
+}
+
+.back-btn:hover, .delete-btn:hover, .save-as-note-btn:hover {
     background-color: var(--clr10);
 }
