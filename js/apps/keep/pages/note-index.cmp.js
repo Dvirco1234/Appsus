@@ -4,6 +4,7 @@ import { eventBus } from "../../../services/eventBus-service.js"
 import noteFilter from "../cmps/note-filter.cmp.js"
 import noteList from "../cmps/note-list.cmp.js"
 import addNote from "../cmps/add-note.cmp.js"
+import { utilService } from "../../../services/util-service.js"
 
 export default {
   template: `
@@ -48,7 +49,18 @@ export default {
       })
     },
     mailToNote(mail) {
-      console.log(mail)
+      const { subject, body } = mail
+      const newNote = {
+        id: utilService.makeId(),
+        type: "note-txt",
+        info: {
+          title: subject,
+          txt: body,
+        },
+        style: { backgroundColor: "yellow" },
+      }
+      console.log(newNote)
+      this.addNote(newNote)
     },
     updateNote(updatedNote) {
       noteService.save(updatedNote).then(() => {
