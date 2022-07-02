@@ -12,12 +12,6 @@
     flex-direction: column;
 }
 
-.review-form input, select{
-    margin-bottom: 1em;
-    height: 2em;
-    max-width: 10em;
-}
-
 .review-form .rate span{
     color: rgb(172, 172, 172);
     font-size: 1.5em;

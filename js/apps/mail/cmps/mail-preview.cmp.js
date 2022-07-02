@@ -28,9 +28,7 @@ export default {
         </td>
         <div class="mail-info flex" :to="'/mail/'+mail.id">
             <td class="subject"><span>{{mail.subject}}</span><span class="draft-span">{{isDraft}}</span></td>
-            <!-- <td class="body"><long-text :txt="mail.body"/></td> -->
             <td class="body"><span>{{mail.body}}</span></td>
-            <!-- <td class="body">{{mail.body}}</td> -->
             <td class="sent-at">{{showTime}}</td>
         </div>
         <div class="opt-btns flex space-between align-center">
@@ -49,12 +47,9 @@ export default {
         <h2>{{mail.subject}}</h2>
         <p>&lt;{{mail.to}}&gt;</p>
         <pre>{{mail.body}}</pre>
-        <button class="to-full-mail-link" @click="showFullMail">
+        <button class="to-full-mail-link" @click="showFullMail" title="open full mail">
             <span class="material-symbols-outlined">open_in_new</span>
         </button>
-        <!-- <router-link class="to-full-mail-link" :to="'/mail/'+mail.id">
-            <span class="material-symbols-outlined">open_in_new</span>
-        </router-link> -->
     </div>
     `,
     components: {

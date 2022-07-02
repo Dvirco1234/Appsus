@@ -6,6 +6,7 @@
 .mail-list-layout {
     width: 100%;
     margin-inline-end: 4em;
+    /* margin-block-end: 1em; */
 }
 
 .main-section {
