@@ -9,7 +9,8 @@ export default {
             <tbody>
                 <tr v-for="mail in mails" :key="mail.id" class="mail-preview-container"
                 @click1="select(mail.id)">
-                    <mail-preview :mail="mail" @deleted="deleted" @save="saveMail" @fullMail="showFullMail"/>
+                    <mail-preview :mail="mail" @deleted="deleted" @save="saveMail" 
+                    @fullMail="showFullMail" @toTrash="mailToTrash"/>
                 </tr>
             </tbody>
         </table>
@@ -39,6 +40,9 @@ export default {
             console.log(mail);
             this.isMailOpen = true
             this.currMail = mail
+        },
+        mailToTrash(mail) {
+            this.$emit('toTrash', mail)
         },
     },
     computed: {},

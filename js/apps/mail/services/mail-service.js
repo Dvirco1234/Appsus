@@ -9,6 +9,8 @@ export const mailService = {
     sendMail,
     saveDraft,
     sort,
+    sendToTrash,
+    // removeFromTrash,
 }
 
 const loggedinUser = {
@@ -17,9 +19,9 @@ const loggedinUser = {
 }
 
 const MAILS_KEY = 'mailsDB'
-// const DRAFTS_KEY = 'draftsDB'
+// const TRASH_KEY = 'trashDB'
 _createMails()
-// _createDrafts()
+// _createTrash()
 
 function query() {
     return storageService.query(MAILS_KEY)
@@ -37,6 +39,15 @@ function get(mailId) {
 function save(mail) {
     return storageService.put(MAILS_KEY, mail)
 }
+
+function sendToTrash(mail) {
+    return storageService.put(MAILS_KEY, mail)
+    // return storageService.post(TRASH_KEY, mail)
+}
+
+// function removeFromTrash(mailId) {
+//     return storageService.remove(TRASH_KEY, mailId)
+// }
 
 function sendMail(mail) {
     if(mail.isDraft){
@@ -60,17 +71,17 @@ function sort(mails, sortBy) {
     else if(sortBy === 'subject') sortedMails = mails.sort((a, b) => a.subject.localeCompare(b.subject))
 }
 
-// function queryDrafts() {
-//     return storageService.query(DRAFTS_KEY)
+// function queryTrash() {
+//     return storageService.query(TRASH_KEY)
 // }
 
-// function _createDrafts(){
-//     return queryDrafts().then((drafts) => {
-//         if (!drafts || !drafts.length) {
-//             drafts = []
-//             return storageService.postMany(DRAFTS_KEY, drafts)
+// function _createTrash() {
+//     return queryTrash().then((trash) => {
+//         if (!trash || !trash.length) {
+//             trash = []
+//             return storageService.postMany(TRASH_KEY, trash)
 //         }
-//         return drafts
+//         return trash
 //     })
 // }
 
@@ -90,6 +101,7 @@ function _createMails() {
                     isStarred: false,
                     isSent: false,
                     isLabeled: false,
+                    isTrash: false,
                 },
                 {
                     id: 'e102',
@@ -102,6 +114,7 @@ function _createMails() {
                     isStarred: false,
                     isSent: false,
                     isLabeled: false,
+                    isTrash: false,
                 },
                 {
                     id: 'e103',
@@ -114,6 +127,7 @@ function _createMails() {
                     isStarred: false,
                     isSent: false,
                     isLabeled: false,
+                    isTrash: false,
                 },
             ]
             return storageService.postMany(MAILS_KEY, mails)

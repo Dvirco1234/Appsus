@@ -22,10 +22,10 @@ export default {
             <button class="compose-btn flex space-between align-center" @click="isComposing = !isComposing">
                 <span class="material-symbols-outlined">add</span>Compose</button>
             <compose-mail v-if="isComposing" @sent="sendMail" @saveDraft="saveMailDraft" 
-            :draft="draft" @closed="toggleCompose" @deleteDraft="deleteMailDraft"/>
+            :draft="draft" :note="note" @closed="toggleCompose" @deleteDraft="deleteMailDraft"/>
             <div class="main-section flex">
                 <mail-nav-filter @filtered="navFilter" :mails="mails"/>
-                <mail-list :mails="mailsToShow" @deleted="deleteMail" @save="saveMail"/>
+                <mail-list :mails="mailsToShow" @deleted="deleteMail" @save="saveMail" @toTrash="sendMailToTrash"/>
             </div>
         </section>
     `,
@@ -56,6 +56,7 @@ export default {
             filterSearch: '',
             filterNav: null,
             sortBy: 'sentAt',
+            note: null,
         }
     },
     mounted() {},
@@ -72,7 +73,6 @@ export default {
         },
         deleteMail(id) {
             mailService.remove(id).then(() => {
-                console.log('delete success')
                 showSuccessMsg('Deleted successfully')
                 const idx = this.mails.findIndex((mail) => mail.id === id)
                 this.mails.splice(idx, 1)
@@ -80,8 +80,7 @@ export default {
         },
         sendMail(mail) {
             mailService.sendMail(mail).then(() => {
-                console.log('send success')
-                showSuccessMsg('Sent successfully')
+                showSuccessMsg('Mail sent successfully')
                 this.mails.unshift(mail)
             })
             this.isComposing = !this.isComposing
@@ -94,6 +93,18 @@ export default {
         deleteMailDraft(draftId) {
             mailService.remove(draftId)
         },
+        sendMailToTrash(mail) {
+            mailService.sendToTrash(mail).then(() => {
+                showSuccessMsg('Mail sent to trash')
+                // const idx = this.mails.findIndex((mail) => mail.id === id)
+                // this.mails.splice(idx, 1)
+            })
+        },
+        // deleteFromTrash(id) {
+        //     mailService.removeFromTrash(id).then(() => {
+        //         showSuccessMsg('Deleted from trash')
+        //     })
+        // },
         toggleCompose() {
             this.isComposing = !this.isComposing
         },
@@ -105,7 +116,8 @@ export default {
             mailService.sort(this.mails, this.sortBy)
         },
         noteToMail(noteInfo) {
-            console.log(noteInfo)
+            this.toggleCompose()
+            this.note = noteInfo
         },
     },
     computed: {
@@ -116,13 +128,12 @@ export default {
             mails = mails.filter((mail) => regex.test(mail.subject) || regex.test(mail.body))
             const nav = this.filterNav
             if (nav === 'all') mails = mails
-            else if (nav === 'inbox') mails = mails.filter((mail) => !mail.isDraft)
-            else if (nav === 'starred') mails = mails.filter((mail) => mail.isStarred)
-            else if (nav === 'sent') mails = mails.filter((mail) => mail.isSent)
-            else if (nav === 'read') mails = mails.filter((mail) => mail.isRead)
-            else if (nav === 'drafts')
-                mails = mails.filter((mail) => mail.isDraft)
-
+            else if (nav === 'inbox') mails = mails.filter((mail) => !mail.isDraft && !mail.isTrash)
+            else if (nav === 'starred') mails = mails.filter((mail) => mail.isStarred && !mail.isTrash)
+            else if (nav === 'sent') mails = mails.filter((mail) => mail.isSent && !mail.isTrash)
+            else if (nav === 'read') mails = mails.filter((mail) => mail.isRead && !mail.isTrash)
+            else if (nav === 'drafts') mails = mails.filter((mail) => mail.isDraft && !mail.isTrash)
+            else if (nav === 'trash') mails = mails.filter((mail) => mail.isTrash)
             return mails
         },
         unmounted() {

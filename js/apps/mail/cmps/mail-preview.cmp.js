@@ -16,9 +16,14 @@ export default {
                 grade
             </span>
         </td>
-        <td class="tag flex align-center" title="This mail is importante" @click.stop="mail.isLabeled = !mail.isLabeled" @click.stop="saveChange">
+        <td v-if="!mail.isTrash" class="tag flex align-center" title="This mail is importante" @click.stop="mail.isLabeled = !mail.isLabeled" @click.stop="saveChange">
             <span class="material-symbols-outlined" :class="{checked: mail.isLabeled}">
                 label_important
+            </span>
+        </td>
+        <td v-else class="tag flex align-center" title="Restore from trash" @click.stop="mail.isTrash = !mail.isTrash">
+            <span class="material-symbols-outlined">
+                restore_from_trash
             </span>
         </td>
         <div class="mail-info flex" :to="'/mail/'+mail.id">
@@ -64,11 +69,13 @@ export default {
     },
     created() {},
     methods: {
-        // starMail(id) {
-        //     isMailStarred = !isMailStarred
-        // },
         deleted() {
-            this.$emit('deleted', this.mail.id)
+            // if(this.mail.isTrash) this.$emit('deleteFromTrash', this.mail.id)
+            if(this.mail.isTrash) this.$emit('deleted', this.mail.id)
+            else {
+                this.mail.isTrash = true
+                this.$emit('toTrash', this.mail)
+            }
         },
         openMail() {
             this.isMailShow = !this.isMailShow

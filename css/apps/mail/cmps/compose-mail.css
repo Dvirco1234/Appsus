@@ -10,7 +10,7 @@
     box-shadow: 0px 2px 7px 0px rgb(135, 135, 135);
     z-index: 10;
 }
-.compose-mail header{
+.compose-mail header {
     padding: .5em;
     color: var(--clr3);
     background-color: var(--clr6);
@@ -74,12 +74,15 @@
     align-items: center;
 }
 
-.compose-mail .delete-btn {
+.compose-mail .delete-draft-btn {
+    /* position: absolute;
+    bottom: 1em;
+    right: 1em; */
     padding: .5em .6em;
     border-radius: 50%;
     color: rgb(100, 100, 100);
 }
 
-.compose-mail .delete-btn:hover {
+.compose-mail .delete-draft-btn:hover {
     background-color: var(--clr10);
 }
