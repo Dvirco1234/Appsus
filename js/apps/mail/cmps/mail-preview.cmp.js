@@ -27,7 +27,7 @@ export default {
             </span>
         </td>
         <div class="mail-info flex" :to="'/mail/'+mail.id">
-            <td class="subject"><span>{{mail.subject}}</span><span class="draft-span">{{isDraft}}</span></td>
+            <td class="subject"><span>{{mail.subject}}<span class="draft-span">{{isDraft}}</span></span></td>
             <td class="body"><span>{{mail.body}}</span></td>
             <td class="sent-at">{{showTime}}</td>
         </div>

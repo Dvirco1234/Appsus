@@ -1,6 +1,6 @@
 .app-footer {
     height: 5vh;
-    padding: 2rem;
+    /* padding: 2rem; */
     background: linear-gradient(rgba(126, 78, 91, 1) 0%, rgba(58, 8, 23, 0.93) 100%);
     color: var(--clr1)
 }
