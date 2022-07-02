@@ -19,9 +19,9 @@ const loggedinUser = {
 }
 
 const MAILS_KEY = 'mailsDB'
-const TRASH_KEY = 'trashDB'
+// const TRASH_KEY = 'trashDB'
 _createMails()
-_createTrash()
+// _createTrash()
 
 function query() {
     return storageService.query(MAILS_KEY)
@@ -71,19 +71,19 @@ function sort(mails, sortBy) {
     else if(sortBy === 'subject') sortedMails = mails.sort((a, b) => a.subject.localeCompare(b.subject))
 }
 
-function queryTrash() {
-    return storageService.query(TRASH_KEY)
-}
+// function queryTrash() {
+//     return storageService.query(TRASH_KEY)
+// }
 
-function _createTrash() {
-    return queryTrash().then((trash) => {
-        if (!trash || !trash.length) {
-            trash = []
-            return storageService.postMany(TRASH_KEY, trash)
-        }
-        return trash
-    })
-}
+// function _createTrash() {
+//     return queryTrash().then((trash) => {
+//         if (!trash || !trash.length) {
+//             trash = []
+//             return storageService.postMany(TRASH_KEY, trash)
+//         }
+//         return trash
+//     })
+// }
 
 function _createMails() {
     // let mails = utilService.load(MAILS_KEY)
