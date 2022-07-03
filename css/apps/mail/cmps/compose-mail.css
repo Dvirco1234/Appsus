@@ -1,5 +1,5 @@
 .compose-mail {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     right: 10px;
     height: 60vh;

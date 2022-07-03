@@ -60,7 +60,7 @@ export default {
           this.close()
       },
       close() {
-          this.$emit("closed")
+          this.$emit("closed", this.draft)
       },
   },
   computed: {},

@@ -22,7 +22,7 @@ export default {
             <button class="compose-btn flex space-between align-center" @click="isComposing = !isComposing">
                 <span class="material-symbols-outlined">add</span>Compose</button>
             <compose-mail v-if="isComposing" @sent="sendMail" @saveDraft="saveMailDraft" 
-            :draft="draft" :note="note" @closed="toggleCompose" @deleteDraft="deleteMailDraft"/>
+            :draft="draft" :note="note" @closed="closeDraft" @deleteDraft="deleteMailDraft"/>
             <div class="main-section flex">
                 <mail-nav-filter @filtered="navFilter" :mails="mails"/>
                 <mail-list :mails="mailsToShow" @deleted="deleteMail" @save="saveMail" @toTrash="sendMailToTrash"/>
@@ -100,13 +100,16 @@ export default {
                 // this.mails.splice(idx, 1)
             })
         },
-        // deleteFromTrash(id) {
-        //     mailService.removeFromTrash(id).then(() => {
-        //         showSuccessMsg('Deleted from trash')
-        //     })
-        // },
         toggleCompose() {
             this.isComposing = !this.isComposing
+        },
+        closeDraft(draft) {
+            this.toggleCompose()
+            mailService.saveDraft(draft).then(() => {
+                this.draft = draft
+                showSuccessMsg('Draft saved')
+                this.mails.unshift(draft)
+            })
         },
         saveMail(mail) {
             mailService.save(mail)
